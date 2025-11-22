@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <courses>
+        <course name="CS2">
+            <course_config>
+                <grade_categories>
+                    <grade_category name="PAs" weight_percentage="5.0"/>
+                    <grade_category name="CAs" weight_percentage="5.0"/>
+                    <grade_category name="LABs" weight_percentage="40.0"/>
+                </grade_categories>
+                <course_zy_config>
+                    <grade_start_column column="F"/>
+                    <last_name_column column="A"/>
+                    <first_name_column column="B"/>
+                    <id_column column="E"/>
+                </course_zy_config>
+            </course_config>
+            <sections>
+                <section name="CS2 Online">
+                    <students>
+                        <!-- <student bs_username="#NONE" zy_id="NONE"/> -->
+                        <student bs_username="#acurwen" zy_id="3056067"/>
+                        <student bs_username="#alawlor" zy_id="3105169"/>
+                        <student bs_username="#babbas1" zy_id="3050388"/>
+                        <student bs_username="#bwallner" zy_id="3066824"/>
+                        <student bs_username="#cjanko" zy_id="3069407"/>
+                        <student bs_username="#clarson10" zy_id="3043387"/>
+                        <student bs_username="#demo.student_1264_34718" zy_id="NONE"/>
+                        <student bs_username="#DQUIPOT" zy_id="34718"/>
+                        <student bs_username="#echowanec" zy_id="3097514"/>
+                        <student bs_username="#finan" zy_id="3082336"/>
+                        <student bs_username="#gchavez4" zy_id="3070434"/>
+                        <student bs_username="#gpopp" zy_id="3123778"/>
+                        <student bs_username="#hvaneck" zy_id="3118918"/>
+                        <student bs_username="#jthakkar" zy_id="3077337"/>
+                        <student bs_username="#jvineman" zy_id="3115442"/>
+                        <student bs_username="#lcollins10" zy_id="3114840"/>
+                        <student bs_username="#lpulidoduarte" zy_id="3098117"/>
+                        <student bs_username="#mellis9" zy_id="3124810"/>
+                        <student bs_username="#nwineke" zy_id="3125739"/>
+                        <student bs_username="#otse" zy_id="3093529"/>
+                        <student bs_username="#qschnell" zy_id="3049188"/>
+                        <student bs_username="#sdyachenko" zy_id="3054028"/>
+                        <student bs_username="#slukashev" zy_id="3039253"/>
+                        <student bs_username="#TKOKINOS" zy_id="2812114"/>
+                        <student bs_username="#ykuzmych" zy_id="3100364"/>
+                        <student bs_username="#zwentland" zy_id="3120528"/>
+                    </students>
+                    <section_config>
+                        <section_bs_config>
+                            <username_order>
+                                #acurwen,
+                                #alawlor,
+                                #babbas1,
+                                #bwallner,
+                                #cjanko,
+                                #clarson10,
+                                #demo.student_1264_34718,
+                                #DQUIPOT,
+                                #echowanec,
+                                #finan,
+                                #gchavez4,
+                                #gpopp,
+                                #hvaneck,
+                                #jthakkar,
+                                #jvineman,
+                                #lcollins10,
+                                #lpulidoduarte,
+                                #mellis9,
+                                #nwineke,
+                                #otse,
+                                #qschnell,
+                                #sdyachenko,
+                                #slukashev,
+                                #TKOKINOS,
+                                #ykuzmych,
+                                #zwentland
+                            </username_order>
+                        </section_bs_config>
+                    </section_config>
+                </section>
+                <section name="CS2 In-Person">
+                    <students>
+                        <!-- TODO more students -->
+                    </students>
+                    <section_config>
+                        <section_bs_config>
+                            <username_order>
+                            </username_order>
+                        </section_bs_config>
+                    </section_config>
+                </section>
+            </sections>
+        </course>
+        <course name="CS1">
+            <course_config>
+                <grade_categories>
+                    <grade_category name="PAs" weight_percentage="5.0"/>
+                    <grade_category name="CAs" weight_percentage="5.0"/>
+                    <grade_category name="LABs" weight_percentage="35.0"/>
+                </grade_categories>
+                <course_zy_config>
+                    <grade_start_column column="F"/>
+                    <last_name_column column="A"/>
+                    <first_name_column column="B"/>
+                    <id_column column="E"/>
+                </course_zy_config>
+            </course_config>
+            <sections>
+                <section name="CS1 Online">
+                    <students>
+                        <!-- TODO more students -->
+                    </students>
+                    <section_config>
+                        <section_bs_config>
+                            <username_order>
+                            </username_order>
+                        </section_bs_config>
+                    </section_config>
+                </section>
+            </sections>
+        </course>
+    </courses>
+</config>
