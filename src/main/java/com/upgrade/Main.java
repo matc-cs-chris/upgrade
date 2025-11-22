@@ -1,8 +1,11 @@
 package com.upgrade;
 
+import com.upgrade.helpers.ExcelHelper;
 import com.upgrade.helpers.FileHelper;
+import com.upgrade.helpers.SearchHelper;
 import com.upgrade.helpers.operations.ConfigInjestor;
 import com.upgrade.helpers.operations.ZybooksAssignmentSummaryInjestor;
+import com.upgrade.model.general.Course;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +30,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    printGradeSummary();
+                    printGradeSummary(scan);
                     break;
                 default:
                     throw new InputMismatchException();
@@ -36,32 +39,64 @@ public class Main {
         catch(InputMismatchException ex){
             System.out.println("Invalid input");
         }
+
+
     }
 
-    private static void printGradeSummary() {
-        File lastFileDir = new File("lastFileDir.sav");
-        try {
-            if(!lastFileDir.exists()){ lastFileDir.createNewFile(); }
+    private static void printGradeSummary(Scanner consoleScanner) {
+        System.out.println("Enter End Column Letter Code: ");
+        String endColumn = consoleScanner.next();
+
+        System.out.println("Enter Course Of Choices: ");
+
+        for(Course aCourse: Course.getCourses()) {
+            System.out.println("-> " + aCourse.getName());
+        }
+
+        Course course = SearchHelper.linearSearch(Course.getCourses(),
+                c -> c.getName().equals(consoleScanner.next()));
+
+        consoleScanner.close();
+
+        //get last chosen files
+        File lastFileSaveDir = new File("lastFileDir.sav");
+        File lastOutputFileSaveDir = new File("outputFileDir.sav");
+
+        File lastFileDir = null;
+        File lasOutputFileDir = null;
+
+        try (Scanner scan = new Scanner(lastFileSaveDir);
+            Scanner scan2 = new Scanner(lastOutputFileSaveDir)) {
+
+            if(!lastFileSaveDir.exists()){ lastFileSaveDir.createNewFile(); }
+            if(!lastOutputFileSaveDir.exists()){ lastOutputFileSaveDir.createNewFile(); }
+
+            lastFileDir = new File(scan.next());
+            lasOutputFileDir = new File(scan2.next());
         }
         catch (IOException ex) {
-            //TODO- IOException
-            System.out.println("Error while creating file");
+
+            System.out.println("Error while creating last files");
             System.exit(1);
         }
 
+        //choose files
         File zybooksAssignmentsSummaryFile = FileHelper.getFileFromChooser(lastFileDir, "CSV");
+        File outputFile = FileHelper.getFileFromChooser(lasOutputFileDir, null);
 
-        ZybooksAssignmentSummaryInjestor.parseGrades(zybooksAssignmentsSummaryFile);
+        //Parsing here
+        ZybooksAssignmentSummaryInjestor.parseGrades(course, endColumn,
+                zybooksAssignmentsSummaryFile, outputFile);
 
-        try ( PrintWriter out = new PrintWriter(lastFileDir, "UTF-8")) {
-
+        //save chosen files
+        try ( PrintWriter out = new PrintWriter(lastFileSaveDir);
+            PrintWriter out2 = new PrintWriter(lastOutputFileSaveDir)) {
+            out.println(zybooksAssignmentsSummaryFile.getAbsolutePath());
+            out2.println(outputFile.getAbsolutePath());
         }
         catch (IOException ex) {
-            //TODO- IOException
-            System.out.println("Error while creating file");
+            System.out.println("Error while saving last files");
+            System.exit(1);
         }
-
-
-        //TODO grade summary
     }
 }

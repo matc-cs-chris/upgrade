@@ -5,22 +5,34 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 
 public class FileHelper {
-    public static File getFileFromChooser(File lastFileDir, String fileExtension) {
+    public static File getFileFromChooser(File lastFile, String fileExtension) {
         JFileChooser chooser = new JFileChooser();
         File file = null;
 
-        chooser.setDialogTitle("Choose " + fileExtension.toUpperCase() + " File Location:");
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+
         chooser.setMultiSelectionEnabled(false);
         chooser.setSize(400,600);
 
-        chooser.setAcceptAllFileFilterUsed(false);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                fileExtension.toUpperCase() + " Files", fileExtension.toUpperCase(),
-                fileExtension.toLowerCase());
-        chooser.setFileFilter(filter);
+        if(fileExtension != null) {
+            chooser.setDialogTitle("Choose " + fileExtension.toUpperCase() + " File Location:");
+            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-        if (lastFileDir.exists()) chooser.setCurrentDirectory(lastFileDir);
+            chooser.setAcceptAllFileFilterUsed(false);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    fileExtension.toUpperCase() + " Files", fileExtension.toUpperCase(),
+                    fileExtension.toLowerCase());
+            chooser.setFileFilter(filter);
+        }
+        else {
+            chooser.setDialogTitle("Choose Folder Location:");
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        }
+
+        if (lastFile != null && lastFile.exists()) {
+            if(fileExtension != null && !lastFile.equals("")) chooser.setSelectedFile(lastFile);
+            else chooser.setCurrentDirectory(lastFile);
+        }
 
         int choice = chooser.showOpenDialog(null);
 
