@@ -18,6 +18,8 @@ public class ZybooksSummaryInjestor {
         Node rootNode = XMLHelper.getConfigRoot();
 
         ArrayList<Course> courses = parseCourses(rootNode);
+
+        return courses;
     }
 
     private static Node getChild(Node node, String name) {
