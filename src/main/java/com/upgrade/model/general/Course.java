@@ -3,21 +3,22 @@ package com.upgrade.model.general;
 import com.upgrade.config.CourseConfig;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Course {
-    private static ArrayList<Course> courses;
+    private static LinkedList<Course> courses;
 
     private String name;
-    private ArrayList<Section> sections;
+    private LinkedList<Section> sections;
     private CourseConfig courseConfig;
 
     //Getters/Setters Below
 
-    public static ArrayList<Course> getCourses() {
+    public static LinkedList<Course> getCourses() {
         return courses;
     }
 
-    public static void setCourses(ArrayList<Course> courses) {
+    public static void setCourses(LinkedList<Course> courses) {
         Course.courses = courses;
     }
 
@@ -29,11 +30,11 @@ public class Course {
         this.name = name;
     }
 
-    public ArrayList<Section> getSections() {
+    public LinkedList<Section> getSections() {
         return sections;
     }
 
-    public void setSections(ArrayList<Section> sections) {
+    public void setSections(LinkedList<Section> sections) {
         this.sections = sections;
     }
 

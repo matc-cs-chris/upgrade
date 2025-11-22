@@ -4,9 +4,10 @@ import com.upgrade.model.general.Course;
 import com.upgrade.model.general.GradeCategory;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class CourseConfig {
-    private ArrayList<GradeCategory> gradeCategories;
+    private LinkedList<GradeCategory> gradeCategories;
     private String gradeStartColumnZybooks;
     private String lastNameColumnZybooks;
     private String firstNameColumnZybooks;
@@ -15,11 +16,11 @@ public class CourseConfig {
 
     //Getters/Setters below
 
-    public ArrayList<GradeCategory> getGradeCategories() {
+    public LinkedList<GradeCategory> getGradeCategories() {
         return gradeCategories;
     }
 
-    public void setGradeCategories(ArrayList<GradeCategory> gradeCategories) {
+    public void setGradeCategories(LinkedList<GradeCategory> gradeCategories) {
         this.gradeCategories = gradeCategories;
     }
 
