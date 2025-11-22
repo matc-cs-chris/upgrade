@@ -1,13 +1,26 @@
 package com.upgrade.model.general;
 
+import java.util.ArrayList;
+
 public class Grade {
+    private static ArrayList<String> allNames;
+
     private Student student;
     private GradeCategory gradeCategory;
     private String assignmentName;
-    private int totalPoints;
-    private int pointsReceived;
+    private double totalPoints;
+    private double percentagePointsReceived;
 
     //Getters/Setters Below
+
+
+    public static ArrayList<String> getAllNames() {
+        return allNames;
+    }
+
+    public static void setAllNames(ArrayList<String> allNames) {
+        Grade.allNames = allNames;
+    }
 
     public Student getStudent() {
         return student;
@@ -33,19 +46,19 @@ public class Grade {
         this.assignmentName = assignmentName;
     }
 
-    public int getTotalPoints() {
+    public double getTotalPoints() {
         return totalPoints;
     }
 
-    public void setTotalPoints(int totalPoints) {
+    public void setTotalPoints(double totalPoints) {
         this.totalPoints = totalPoints;
     }
 
-    public int getPointsReceived() {
-        return pointsReceived;
+    public double getPercentagePointsReceived() {
+        return percentagePointsReceived;
     }
 
-    public void setPointsReceived(int pointsReceived) {
-        this.pointsReceived = pointsReceived;
+    public void setPercentagePointsReceived(double percentagePointsReceived) {
+        this.percentagePointsReceived = percentagePointsReceived;
     }
 }

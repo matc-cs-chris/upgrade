@@ -45,7 +45,7 @@ public class Main {
 
     private static void printGradeSummary(Scanner consoleScanner) {
         System.out.println("Enter End Column Letter Code: ");
-        String endColumn = consoleScanner.next();
+        String endColumn = consoleScanner.next().toUpperCase();
 
         System.out.println("Enter Course Of Choices: ");
 
@@ -54,7 +54,7 @@ public class Main {
         }
 
         Course course = SearchHelper.linearSearch(Course.getCourses(),
-                c -> c.getName().equals(consoleScanner.next()));
+                c -> c.getName().toUpperCase().equals(consoleScanner.next().toUpperCase()));
 
         consoleScanner.close();
 

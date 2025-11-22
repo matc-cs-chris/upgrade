@@ -1,5 +1,6 @@
 package com.upgrade.model.general;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Student {
@@ -12,8 +13,17 @@ public class Student {
     private String firstNameBrightSpace;
     private String lastNameBrightSpace;
     private String usernameBrightSpace;
+    private ArrayList<Grade> grades;
 
     //Getters/Setters Below
+
+    public ArrayList<Grade> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(ArrayList<Grade> grades) {
+        this.grades = grades;
+    }
 
     public static LinkedList<Student> getStudents() {
         return students;

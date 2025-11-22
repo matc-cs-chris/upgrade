@@ -36,6 +36,8 @@ public class ConfigInjestor {
     private static LinkedList<Course> parseCourses(Node rootNode) {
         LinkedList<Course> courses = new LinkedList<>();
 
+        if (Course.getCourses() == null) Course.setCourses(new LinkedList<>());
+
         Node coursesNode = getChild(rootNode, "courses");
 
         for(Node courseNode : getChildren(coursesNode, "course")) {
@@ -49,9 +51,9 @@ public class ConfigInjestor {
             course.setSections(parseSections(course, courseNode));
 
             courses.add(course);
+            Course.getCourses().add(course);
         }
 
-        Course.setCourses(courses);
         return courses;
     }
 
@@ -117,6 +119,8 @@ public class ConfigInjestor {
     private static LinkedList<Section> parseSections(Course course, Node courseNode) {
         LinkedList<Section> sections = new LinkedList<>();
 
+        if(Section.getSections() == null) Section.setSections(new LinkedList<>());
+
         Node sectionsNode = getChild(courseNode, "sections");
 
         for(Node sectionNode : getChildren(sectionsNode, "section")) {
@@ -133,11 +137,10 @@ public class ConfigInjestor {
             section.setCourse(course);
 
             sections.add(section);
+            Section.getSections().add(section);
         }
 
         course.setSections(sections);
-
-        Section.setSections(sections);
 
         return sections;
     }
@@ -175,6 +178,8 @@ public class ConfigInjestor {
     private static LinkedList<Student> parseStudents(Section section, Node sectionNode) {
         LinkedList<Student> students = new LinkedList<>();
 
+        if(Student.getStudents() == null) Student.setStudents(new LinkedList<>());
+
         Node studentsNode = getChild(sectionNode, "students");
         assert studentsNode != null;
 
@@ -191,9 +196,8 @@ public class ConfigInjestor {
             student.setSection(section);
 
             students.add(student);
+            Student.getStudents().add(student);
         }
-
-        Student.setStudents(students);
 
         return students;
     }

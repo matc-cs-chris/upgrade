@@ -11,6 +11,7 @@ import com.upgrade.model.general.Student;
 import java.io.File;
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class ZybooksAssignmentSummaryInjestor {
             String[] assignmentNames = null;
             int[] totalPoints = null;
 
-            try (Scanner scanner = new Scanner(zybooksAssignmentsSummaryFile, ", "))
+            try (Scanner scanner = new Scanner(zybooksAssignmentsSummaryFile))
             {
                 //PROCESS HEADERS
                 String headerRow = scanner.nextLine();
@@ -49,11 +50,13 @@ public class ZybooksAssignmentSummaryInjestor {
                     Student studentMatch = SearchHelper.linearSearch(Student.getStudents(),
                             s -> s.getIdZybooks().equals(columns[idColumn]));
 
-                    studentMatch.setFirstNameZybooks(columns[firstNameColumn]);
-                    studentMatch.setLastNameZybooks(columns[lastNameColumn]);
+                    if (studentMatch != null) { //means is in xml as a student
+                        studentMatch.setFirstNameZybooks(columns[firstNameColumn]);
+                        studentMatch.setLastNameZybooks(columns[lastNameColumn]);
 
-                    //RECORD GRADES
-                    createGrades(studentMatch, assignmentNames, totalPoints, columns, startColumn, endColumn);
+                        //RECORD GRADES
+                        createGrades(studentMatch, assignmentNames, totalPoints, columns, startColumn, endColumn);
+                    }
                 }
 
             } catch (IOException e) {
@@ -65,21 +68,27 @@ public class ZybooksAssignmentSummaryInjestor {
 
     private static void createGrades(Student studentMatch, String[] gradeNames,
                                      int[] totalPoints, String[] columns, int startColumn, int endColumn) {
+
+        if(Grade.getAllNames() == null) Grade.setAllNames(new ArrayList<>());
+        if(studentMatch.getGrades() == null) studentMatch.setGrades(new ArrayList<>());
+
         for(int i = startColumn; i <= endColumn; i++) {
             String gradeName = gradeNames[i];
             int totalPoint = totalPoints[i];
 
             if(gradeName != null) {
+                Grade.getAllNames().add(gradeName);
+
                 Grade grade = new Grade();
                 grade.setStudent(studentMatch);
                 grade.setAssignmentName(gradeName);
                 grade.setTotalPoints(totalPoint);
 
                 try {
-                    grade.setPointsReceived(Integer.parseInt(columns[i]));
+                    grade.setPercentagePointsReceived(Double.parseDouble(columns[i]));
                 }
                 catch (NumberFormatException e) {
-                    grade.setPointsReceived(-1);
+                    grade.setPercentagePointsReceived(Double.NaN);
                     System.out.println(studentMatch.getUsernameBrightSpace() + "'s " + gradeName +
                             " score of: " + columns[i] + " is not a number");
                     System.exit(1);
@@ -89,12 +98,14 @@ public class ZybooksAssignmentSummaryInjestor {
                         studentMatch.getSection().getCourse().getCourseConfig().getGradeCategories();
 
                 for(GradeCategory gradeCategory : gradeCategories) {
-                    if (gradeName.contains(gradeCategory.getName())) {}
-                    else {
-                        System.out.println("Grade Category for " + gradeName + " not found");
-                        System.exit(1);
+                    if (gradeName.contains(gradeCategory.getName())) {
+                        grade.setGradeCategory(gradeCategory);
                     }
                 }
+
+                studentMatch.getGrades().add(grade);
+
+                assert grade.getGradeCategory() != null;
             }
         }
     }
