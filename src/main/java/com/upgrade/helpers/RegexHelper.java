@@ -13,13 +13,13 @@ public class RegexHelper {
         return parseHeaders(rawNames, ASSIGNMENT_NAME_REGEX_GROUP);
     }
 
-    public static int[] getTotalPoints(String[] rawNames) {
+    public static double[] getTotalPoints(String[] rawNames) {
         String[] totalPointsText = parseHeaders(rawNames, TOTAL_POINTS_REGEX_GROUP);
-        int[] totalPoints = new int[totalPointsText.length];
+        double[] totalPoints = new double[totalPointsText.length];
 
         for (int i = 0; i < totalPointsText.length; i++) {
             try {
-                totalPoints[i] = Integer.parseInt(totalPointsText[i]);
+                totalPoints[i] = Double.parseDouble(totalPointsText[i]);
             }
             catch (Exception e) {
                 totalPoints[i] = -1;

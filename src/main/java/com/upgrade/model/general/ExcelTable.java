@@ -31,6 +31,54 @@ public class ExcelTable {
         rowColumnValues = new ArrayList<>();
 
         rowColumnValues.add(getHeaderColumn());
+
+        for (Section section : course.getSections()) {
+            String[] sectionHeaderRow = new String[width];
+            sectionHeaderRow[0] = section.getName();
+
+            rowColumnValues.add(new String[width]);
+            rowColumnValues.add(sectionHeaderRow);
+            rowColumnValues.add(new String[width]);
+
+            for(Student student : section.getStudents()) {
+                String[] row = new String[width];
+
+                row[0] = student.getUsernameBrightSpace();
+                row[1] = student.getIdZybooks();
+                row[2] = student.getLastNameZybooks();
+                row[3] = student.getFirstNameZybooks();
+
+
+                for(int categoryNumber = 0; categoryNumber < gradeCategories.length; categoryNumber++) {
+                    GradeCategory gradeCategory = gradeCategories[categoryNumber];
+
+
+
+                    int currentColumnIndex = gradeCategoryStartIndex[categoryNumber];
+                    double totalPoints = 0;
+                    double receivedPoints = 0;
+
+                    if(student.getCategoryToGrades() == null) continue; //gets rid of demo student
+
+                    ArrayList<Grade> grades = student.getCategoryToGrades().get(gradeCategory);
+                    for(int gradeNumber = 0; gradeNumber < grades.size(); gradeNumber++) {
+                        Grade grade = grades.get(gradeNumber);
+                        row[currentColumnIndex] = Double.toString(grade.getPercentagePointsReceived());
+
+                        totalPoints += grade.getTotalPoints();
+                        receivedPoints += grade.getPercentagePointsReceived() * grade.getTotalPoints() / 100.0;
+
+                        currentColumnIndex++;
+                    }
+
+                    row[receivedPointsIndex[categoryNumber]] = Double.toString(receivedPoints);
+                    row[possiblePointsIndex[categoryNumber]] = Double.toString(totalPoints);
+                    row[percentageGradeIndex[categoryNumber]] = Double.toString(receivedPoints*100.0/totalPoints);
+                }
+
+                rowColumnValues.add(row);
+            }
+        }
     }
 
     private String[] getHeaderColumn() {

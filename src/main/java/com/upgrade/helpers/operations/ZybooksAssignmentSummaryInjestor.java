@@ -20,7 +20,7 @@ public class ZybooksAssignmentSummaryInjestor {
                                    File zybooksAssignmentsSummaryFile, File outFile) {
             String[] headerColumns = null;
             String[] assignmentNames = null;
-            int[] totalPoints = null;
+            double[] totalPoints = null;
 
             try (Scanner scanner = new Scanner(zybooksAssignmentsSummaryFile))
             {
@@ -67,14 +67,14 @@ public class ZybooksAssignmentSummaryInjestor {
     }
 
     private static void createGrades(Student studentMatch, String[] gradeNames,
-                                     int[] totalPoints, String[] columns, int startColumn, int endColumn) {
+                                     double[] totalPoints, String[] columns, int startColumn, int endColumn) {
 
         if(Grade.getAllCategoriesToNames() == null) Grade.setAllCategoriesToNames(new HashMap<>());
         if(studentMatch.getCategoryToGrades() == null) studentMatch.setCategoryToGrades(new HashMap<>());
 
         for(int i = startColumn; i <= endColumn; i++) {
             String gradeName = gradeNames[i];
-            int totalPoint = totalPoints[i];
+            double totalPoint = totalPoints[i];
 
             LinkedList<GradeCategory> gradeCategories =
                     studentMatch.getSection().getCourse().getCourseConfig().getGradeCategories();
