@@ -4,6 +4,7 @@ import com.upgrade.model.classroom.Course;
 import com.upgrade.model.classroom.Section;
 import com.upgrade.model.classroom.Student;
 
+//TODO - add mismatch ignore by student?
 public class NameValidator {
     public static boolean validateNames(Course course) {
         boolean errorDetected = false;

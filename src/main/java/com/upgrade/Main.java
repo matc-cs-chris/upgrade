@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.InputMismatchException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -70,18 +71,18 @@ public class Main {
 
         System.out.println("Enter Course Of Choices: ");
 
-        for(Course aCourse: Course.getCourses()) {
-            System.out.println("-> " + aCourse.getName());
+        LinkedList<Course> courses = Course.getCourses();
+
+        int courseIndex = 1;
+
+        for(Course aCourse: courses){
+            System.out.println(courseIndex + " - " + aCourse.getName());
+            courseIndex++;
         }
 
-        String courseInput = consoleScanner.next().toUpperCase();
-
-        Course course = SearchHelper.linearSearch(Course.getCourses(),
-                c -> c.getName().equalsIgnoreCase(courseInput));
+        Course course = Course.getCourses().get(Integer.parseInt(consoleScanner.next()) - 1);
 
         consoleScanner.close();
-
-
 
         //get last chosen files
         File lastFileSaveDir = new File("lastFileDir.sav");
