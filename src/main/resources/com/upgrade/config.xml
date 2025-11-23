@@ -4,21 +4,22 @@
         <course name="CS2">
             <course_config>
                 <grade_categories>
+                    <!-- your assignment names must contain one of these category names -->
                     <grade_category name="PAs" weight_percentage="5.0"/>
                     <grade_category name="CAs" weight_percentage="5.0"/>
                     <grade_category name="Labs" weight_percentage="40.0"/>
                 </grade_categories>
                 <course_zy_config>
                     <grade_start_column column="F"/>
-                    <last_name_column column="A"/>
-                    <first_name_column column="B"/>
+                    <last_name_column column="B"/>
+                    <first_name_column column="A"/>
                     <id_column column="E"/>
                 </course_zy_config>
             </course_config>
             <sections>
                 <section name="CS2 Online">
                     <students>
-                        <!-- <student bs_username="#NONE" zy_id="NONE"/> -->
+                        <!-- <student bs_username="NONE" zy_id="NONE"/> -->
                         <student bs_username="#acurwen" zy_id="3056067"/>
                         <student bs_username="#alawlor" zy_id="3105169"/>
                         <student bs_username="#babbas1" zy_id="3050388"/>
@@ -49,6 +50,7 @@
                     <section_config>
                         <section_bs_config>
                             <username_order>
+                                <!-- the order usernames appear in a brightspace csv export -->
                                 #acurwen,
                                 #alawlor,
                                 #babbas1,
@@ -81,11 +83,52 @@
                 </section>
                 <section name="CS2 In-Person">
                     <students>
-                        <!-- TODO more students -->
+                        <!-- <student bs_username="NONE" zy_id="NONE"/> -->
+                        <student bs_username="#aallison7" zy_id="3097731"/>
+                        <student bs_username="#atripkovic" zy_id="3122542"/>
+                        <student bs_username="#cgolesh" zy_id="3122734"/>
+                        <student bs_username="#demo.student_1264_34768" zy_id="NONE"/>
+                        <student bs_username="#ebarrow1" zy_id="3095366"/>
+                        <student bs_username="#ggraybar" zy_id="3078531"/>
+                        <student bs_username="#hhooverson" zy_id="3042953"/>
+                        <student bs_username="#hvangilder1" zy_id="3084091"/>
+                        <student bs_username="#itunkara1" zy_id="3099506"/>
+                        <student bs_username="#jpaz2" zy_id="3116466"/>
+                        <student bs_username="#kvang52" zy_id="3120412"/>
+                        <student bs_username="#LXELHUA" zy_id="2876626"/>
+                        <student bs_username="#mmahmood1" zy_id="3102256"/>
+                        <student bs_username="#mvangulik" zy_id="3062782"/>
+                        <student bs_username="#qmattsson" zy_id="2964873"/>
+                        <student bs_username="#rburksjr" zy_id="3093126"/>
+                        <student bs_username="#rtripathi" zy_id="3090380"/>
+                        <student bs_username="#swang10" zy_id="3083668"/>
+                        <student bs_username="#wclutter" zy_id="3066533"/>
+                        <student bs_username="#wtibesso" zy_id="3086670"/>
                     </students>
                     <section_config>
                         <section_bs_config>
                             <username_order>
+                                <!-- the order usernames appear in a brightspace csv export -->
+                                #aallison7,
+                                #atripkovic,
+                                #cgolesh,
+                                #demo.student_1264_34768,
+                                #ebarrow1,
+                                #ggraybar,
+                                #hhooverson,
+                                #hvangilder1,
+                                #itunkara1,
+                                #jpaz2,
+                                #kvang52,
+                                #LXELHUA,
+                                #mmahmood1,
+                                #mvangulik,
+                                #qmattsson,
+                                #rburksjr,
+                                #rtripathi,
+                                #swang10,
+                                #wclutter,
+                                #wtibesso
                             </username_order>
                         </section_bs_config>
                     </section_config>
@@ -110,10 +153,12 @@
                 <section name="CS1 Online">
                     <students>
                         <!-- TODO more students -->
+                        <!-- <student bs_username="NONE" zy_id="NONE"/> -->
                     </students>
                     <section_config>
                         <section_bs_config>
                             <username_order>
+                                <!-- the order usernames appear in a brightspace csv export -->
                             </username_order>
                         </section_bs_config>
                     </section_config>

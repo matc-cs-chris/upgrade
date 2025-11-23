@@ -1,7 +1,8 @@
-package com.upgrade.model.general;
+package com.upgrade.model.excel;
 
 import com.upgrade.config.CourseConfig;
 import com.upgrade.helpers.ExcelHelper;
+import com.upgrade.model.classroom.*;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -63,10 +64,13 @@ public class ExcelTable {
                     ArrayList<Grade> grades = student.getCategoryToGrades().get(gradeCategory);
                     for(int gradeNumber = 0; gradeNumber < grades.size(); gradeNumber++) {
                         Grade grade = grades.get(gradeNumber);
-                        row[currentColumnIndex] = Double.toString(grade.getPercentagePointsReceived());
+
+                        row[currentColumnIndex] = Double.toString(grade.getPointsReceived());
 
                         totalPoints += grade.getTotalPoints();
-                        receivedPoints += grade.getPercentagePointsReceived() * grade.getTotalPoints() / 100.0;
+
+
+                        receivedPoints += grade.getPointsReceived();
 
                         currentColumnIndex++;
                     }

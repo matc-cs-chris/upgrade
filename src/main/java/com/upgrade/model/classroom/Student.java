@@ -1,4 +1,4 @@
-package com.upgrade.model.general;
+package com.upgrade.model.classroom;
 
 import java.util.*;
 

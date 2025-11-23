@@ -1,6 +1,6 @@
 package com.upgrade.config;
 
-import com.upgrade.model.general.Section;
+import com.upgrade.model.classroom.Section;
 
 import java.util.ArrayList;
 

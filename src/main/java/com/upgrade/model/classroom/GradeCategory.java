@@ -1,6 +1,5 @@
-package com.upgrade.model.general;
+package com.upgrade.model.classroom;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class GradeCategory {

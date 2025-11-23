@@ -1,9 +1,8 @@
 package com.upgrade.config;
 
-import com.upgrade.model.general.Course;
-import com.upgrade.model.general.GradeCategory;
+import com.upgrade.model.classroom.Course;
+import com.upgrade.model.classroom.GradeCategory;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class CourseConfig {

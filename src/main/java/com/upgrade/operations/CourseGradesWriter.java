@@ -1,10 +1,11 @@
-package com.upgrade.helpers.operations;
+package com.upgrade.operations;
 
-import com.upgrade.model.general.*;
+import com.upgrade.model.classroom.Course;
+import com.upgrade.model.excel.ExcelTable;
 
 import java.io.File;
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class CourseGradesWriter {
     //TODO
@@ -12,8 +13,12 @@ public class CourseGradesWriter {
         String saveFileName = outFile.getAbsolutePath();
         saveFileName += File.separator;
 
-        String newFileName = (new Timestamp(Instant.now().getEpochSecond())).toString();;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
+        String newFileName = LocalDateTime.now().format(dtf);
         newFileName += "_" + courseName + "_Grades.csv";
+
+        //just in case
+        newFileName = newFileName.replaceAll("/","_");
         newFileName = newFileName.replaceAll(" ","_");
         newFileName = newFileName.replaceAll(":","-");
 
@@ -33,5 +38,7 @@ public class CourseGradesWriter {
 
         ExcelTable table = new ExcelTable(course);
         table.write(outFile);
+
+        System.out.println("Course " + courseName + " has been written to: " + outFile.getAbsolutePath());
     }
 }

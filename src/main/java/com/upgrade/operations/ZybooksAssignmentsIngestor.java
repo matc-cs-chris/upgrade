@@ -1,19 +1,19 @@
-package com.upgrade.helpers.operations;
+package com.upgrade.operations;
 
 import com.upgrade.helpers.ExcelHelper;
 import com.upgrade.helpers.RegexHelper;
 import com.upgrade.helpers.SearchHelper;
-import com.upgrade.model.general.Course;
-import com.upgrade.model.general.Grade;
-import com.upgrade.model.general.GradeCategory;
-import com.upgrade.model.general.Student;
+import com.upgrade.model.classroom.Course;
+import com.upgrade.model.classroom.Grade;
+import com.upgrade.model.classroom.GradeCategory;
+import com.upgrade.model.classroom.Student;
 
 import java.io.File;
 import java.io.IOException;
 
 import java.util.*;
 
-public class ZybooksAssignmentSummaryInjestor {
+public class ZybooksAssignmentsIngestor {
     private static boolean haveAddedOneStudent = false;
 
     public static void parseGrades(Course course, String endColumnText,
@@ -55,7 +55,8 @@ public class ZybooksAssignmentSummaryInjestor {
                         studentMatch.setLastNameZybooks(columns[lastNameColumn]);
 
                         //RECORD GRADES
-                        createGrades(studentMatch, assignmentNames, totalPoints, columns, startColumn, endColumn);
+                        createGrades(studentMatch, assignmentNames,
+                                totalPoints, columns, startColumn, endColumn);
                     }
                 }
 
@@ -72,7 +73,7 @@ public class ZybooksAssignmentSummaryInjestor {
         if(Grade.getAllCategoriesToNames() == null) Grade.setAllCategoriesToNames(new HashMap<>());
         if(studentMatch.getCategoryToGrades() == null) studentMatch.setCategoryToGrades(new HashMap<>());
 
-        for(int i = startColumn; i <= endColumn; i++) {
+        for(int i = startColumn; i <= endColumn - 1; i++) {
             String gradeName = gradeNames[i];
             double totalPoint = totalPoints[i];
 
@@ -86,10 +87,13 @@ public class ZybooksAssignmentSummaryInjestor {
                 grade.setTotalPoints(totalPoint);
 
                 try {
-                    grade.setPercentagePointsReceived(Double.parseDouble(columns[i]));
+                    grade.setPercentageReceived(Double.parseDouble(columns[i]));
+                    grade.setPointsReceived(Math.round(Double.parseDouble(columns[i]) * totalPoint / 100.0));
                 }
                 catch (NumberFormatException e) {
-                    grade.setPercentagePointsReceived(Double.NaN);
+                    grade.setPercentageReceived(Double.NaN);
+                    grade.setPointsReceived(Double.NaN);
+
                     System.out.println(studentMatch.getUsernameBrightSpace() + "'s " + gradeName +
                             " score of: " + columns[i] + " is not a number");
                     System.exit(1);

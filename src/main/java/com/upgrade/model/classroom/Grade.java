@@ -1,9 +1,8 @@
-package com.upgrade.model.general;
+package com.upgrade.model.classroom;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
 
 public class Grade {
     private static HashMap<GradeCategory, ArrayList<String>> allCategoriesToNames;
@@ -12,20 +11,36 @@ public class Grade {
     private GradeCategory gradeCategory;
     private String assignmentName;
     private double totalPoints;
-    private double percentagePointsReceived;
+    private double percentageReceived;
+    private double pointsReceived;
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Grade grade)) return false;
-        return Double.compare(totalPoints, grade.totalPoints) == 0 && Double.compare(percentagePointsReceived, grade.percentagePointsReceived) == 0 && Objects.equals(gradeCategory, grade.gradeCategory) && Objects.equals(assignmentName, grade.assignmentName);
+        return Double.compare(totalPoints, grade.totalPoints) == 0 && Double.compare(percentageReceived, grade.percentageReceived) == 0 && Double.compare(pointsReceived, grade.pointsReceived) == 0 && Objects.equals(gradeCategory, grade.gradeCategory) && Objects.equals(assignmentName, grade.assignmentName);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(gradeCategory, assignmentName, totalPoints, percentagePointsReceived);
+    public int hashCode() { //adding student would be circular
+        return Objects.hash(gradeCategory, assignmentName, totalPoints, percentageReceived, pointsReceived);
     }
 
-    //Getters/Setters Below
+//Getters/Setters Below
+    public double getPercentageReceived() {
+        return percentageReceived;
+    }
+
+    public void setPercentageReceived(double percentageReceived) {
+        this.percentageReceived = percentageReceived;
+    }
+
+    public double getPointsReceived() {
+        return pointsReceived;
+    }
+
+    public void setPointsReceived(double pointsReceived) {
+        this.pointsReceived = pointsReceived;
+    }
 
     public static HashMap<GradeCategory, ArrayList<String>> getAllCategoriesToNames() {
         return allCategoriesToNames;
@@ -65,13 +80,5 @@ public class Grade {
 
     public void setTotalPoints(double totalPoints) {
         this.totalPoints = totalPoints;
-    }
-
-    public double getPercentagePointsReceived() {
-        return percentagePointsReceived;
-    }
-
-    public void setPercentagePointsReceived(double percentagePointsReceived) {
-        this.percentagePointsReceived = percentagePointsReceived;
     }
 }

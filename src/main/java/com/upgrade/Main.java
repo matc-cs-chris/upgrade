@@ -1,12 +1,12 @@
 package com.upgrade;
 
-import com.upgrade.helpers.ExcelHelper;
 import com.upgrade.helpers.FileHelper;
 import com.upgrade.helpers.SearchHelper;
-import com.upgrade.helpers.operations.ConfigInjestor;
-import com.upgrade.helpers.operations.CourseGradesWriter;
-import com.upgrade.helpers.operations.ZybooksAssignmentSummaryInjestor;
-import com.upgrade.model.general.Course;
+import com.upgrade.operations.ConfigIngestor;
+import com.upgrade.operations.CourseGradesWriter;
+import com.upgrade.operations.NameValidator;
+import com.upgrade.operations.ZybooksAssignmentsIngestor;
+import com.upgrade.model.classroom.Course;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,10 +21,12 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
 
-        ConfigInjestor.parseCourses();
+        ConfigIngestor.parseCourses();
 
         System.out.println("Enter operation (or 'quit'): ");
         System.out.println("1 - Print Grade Summary");
+//        System.out.println("2 - Print Grade Summary (One Student)");
+//        System.out.println("3 - Validate Name Config");
 
         try{
             int choice = scan.nextInt();
@@ -33,6 +35,10 @@ public class Main {
                 case 1:
                     printGradeSummary(scan);
                     break;
+//TODO: Add single student reports?
+                    //                case 2:
+//                    printGradeSummary(scan, true);
+//                    break;
                 default:
                     throw new InputMismatchException();
             }
@@ -45,6 +51,20 @@ public class Main {
     }
 
     private static void printGradeSummary(Scanner consoleScanner) {
+        boolean usePercentage = true;
+
+        System.out.println("Choose: \n1 - Percentage\n2 - Points");
+        switch (consoleScanner.next()) {
+            case "1":
+                usePercentage = true;
+                break;
+            case "2":
+                usePercentage = false;
+                break;
+            default:
+                usePercentage = true;
+        }
+
         System.out.println("Enter End Column Letter Code: ");
         String endColumn = consoleScanner.next().toUpperCase();
 
@@ -58,6 +78,8 @@ public class Main {
                 c -> c.getName().toUpperCase().equals(consoleScanner.next().toUpperCase()));
 
         consoleScanner.close();
+
+
 
         //get last chosen files
         File lastFileSaveDir = new File("lastFileDir.sav");
@@ -85,8 +107,10 @@ public class Main {
         File outputFile = FileHelper.getFileFromChooser(lasOutputFileDir, null);
 
         //Parsing here
-        ZybooksAssignmentSummaryInjestor.parseGrades(course, endColumn,
+        ZybooksAssignmentsIngestor.parseGrades(course, endColumn,
                 zybooksAssignmentsSummaryFile, outputFile);
+
+        NameValidator.validateNames(course);
 
         //save chosen files
         try ( PrintWriter out = new PrintWriter(lastFileSaveDir);

@@ -1,12 +1,12 @@
-package com.upgrade.helpers.operations;
+package com.upgrade.operations;
 
 import com.upgrade.config.CourseConfig;
 import com.upgrade.config.SectionConfig;
 import com.upgrade.helpers.XMLHelper;
-import com.upgrade.model.general.Course;
-import com.upgrade.model.general.GradeCategory;
-import com.upgrade.model.general.Section;
-import com.upgrade.model.general.Student;
+import com.upgrade.model.classroom.Course;
+import com.upgrade.model.classroom.GradeCategory;
+import com.upgrade.model.classroom.Section;
+import com.upgrade.model.classroom.Student;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -15,9 +15,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class ConfigInjestor {
+public class ConfigIngestor {
+    public static boolean usePercentage = false;
+
     public static LinkedList<Course> parseCourses() {
-        //TODO injest grades
         Node rootNode = XMLHelper.getConfigRoot();
 
         LinkedList<Course> courses = parseCourses(rootNode);

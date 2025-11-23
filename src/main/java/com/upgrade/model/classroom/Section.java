@@ -1,8 +1,7 @@
-package com.upgrade.model.general;
+package com.upgrade.model.classroom;
 
 import com.upgrade.config.SectionConfig;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Section {
