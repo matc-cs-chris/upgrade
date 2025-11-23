@@ -14,9 +14,10 @@ Using 1 one-time setup config.xml and 1 export from Zybooks per book, you can pr
 6) After correct setup, run /src/main/java/Main (you could fork into a new IntelliJ project)
 7) Console input choices: process to run, percentages/points, column letters, course to report on
 8) Then 2 GUI filechoosers will show up. The first is to select the export from Zybooks. The second is what directory you want to output to.
-9) Watch the console, it may warn that some student setup should be verified
-10) Once done, the program will say it's complete and provide a filepath to the .csv you've created
-11) This output should have everything you need to easily copy into imports for brightspace! :)
+9) The filechoosers will remember past choices
+10) Watch the console, it may warn that some student setup should be verified
+11) Once done, the program will say it's complete and provide a filepath to the .csv you've created
+12) This output should have everything you need to easily copy into imports for brightspace! :)
 
 -Possible Future Features-
 1) ignore validation warnings for certain students
