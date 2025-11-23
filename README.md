@@ -17,3 +17,9 @@ Using 1 one-time setup config.xml and 1 export from Zybooks per book, you can pr
 9) Watch the console, it may warn that some student setup should be verified
 10) Once done, the program will say it's complete and provide a filepath to the .csv you've created
 11) This output should have everything you need to easily copy into imports for brightspace! :)
+
+-Possible Future Features-
+1) ignore validation warnings for certain students
+2) print out a report of just one student (FERPA-friendly)
+3) a csv you can directly plug into brightspace import
+4) etc.
