@@ -140,12 +140,12 @@
                 <grade_categories>
                     <grade_category name="PAs" weight_percentage="5.0"/>
                     <grade_category name="CAs" weight_percentage="5.0"/>
-                    <grade_category name="LABs" weight_percentage="35.0"/>
+                    <grade_category name="Labs" weight_percentage="35.0"/>
                 </grade_categories>
                 <course_zy_config>
                     <grade_start_column column="F"/>
-                    <last_name_column column="A"/>
-                    <first_name_column column="B"/>
+                    <last_name_column column="B"/>
+                    <first_name_column column="A"/>
                     <id_column column="E"/>
                 </course_zy_config>
             </course_config>
@@ -154,11 +154,41 @@
                     <students>
                         <!-- TODO more students -->
                         <!-- <student bs_username="NONE" zy_id="NONE"/> -->
+                        <student bs_username="#acovarrubiasgarcia" zy_id="3071039"/>
+                        <student bs_username="#amirambeaux" zy_id="3052264"/>
+                        <student bs_username="#bcampbell10" zy_id="NONE"/>
+                        <student bs_username="#brehm1" zy_id="3087983"/>
+                        <student bs_username="#demo.student_1264_34816" zy_id="NONE"/>
+                        <student bs_username="#idavel" zy_id="3082898"/>
+                        <student bs_username="#imoore7" zy_id="3122255"/>
+                        <student bs_username="#lnowak2" zy_id="3061526"/>
+                        <student bs_username="#lphillips8" zy_id="3039941"/>
+                        <student bs_username="#lsalt" zy_id="3118069"/>
+                        <student bs_username="#mlucassen" zy_id="3083700"/>
+                        <student bs_username="#ppalety1" zy_id="3129194"/>
+                        <student bs_username="#rnicholson" zy_id="3101958"/>
+                        <student bs_username="#sgermundson" zy_id="3117391"/>
+                        <student bs_username="#tsmith72" zy_id="3095306"/>
                     </students>
                     <section_config>
                         <section_bs_config>
                             <username_order>
                                 <!-- the order usernames appear in a brightspace csv export -->
+                                #acovarrubiasgarcia,
+                                #amirambeaux,
+                                #bcampbell10,
+                                #brehm1,
+                                #demo.student_1264_34816,
+                                #idavel,
+                                #imoore7,
+                                #lnowak2,
+                                #lphillips8,
+                                #lsalt,
+                                #mlucassen,
+                                #ppalety1,
+                                #rnicholson,
+                                #sgermundson,
+                                #tsmith72
                             </username_order>
                         </section_bs_config>
                     </section_config>

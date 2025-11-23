@@ -74,8 +74,10 @@ public class Main {
             System.out.println("-> " + aCourse.getName());
         }
 
+        String courseInput = consoleScanner.next().toUpperCase();
+
         Course course = SearchHelper.linearSearch(Course.getCourses(),
-                c -> c.getName().toUpperCase().equals(consoleScanner.next().toUpperCase()));
+                c -> c.getName().equalsIgnoreCase(courseInput));
 
         consoleScanner.close();
 
@@ -107,8 +109,7 @@ public class Main {
         File outputFile = FileHelper.getFileFromChooser(lasOutputFileDir, null);
 
         //Parsing here
-        ZybooksAssignmentsIngestor.parseGrades(course, endColumn,
-                zybooksAssignmentsSummaryFile, outputFile);
+        ZybooksAssignmentsIngestor.parseGrades(course, endColumn, zybooksAssignmentsSummaryFile);
 
         NameValidator.validateNames(course);
 
@@ -123,6 +124,6 @@ public class Main {
             System.exit(1);
         }
 
-        CourseGradesWriter.writeGradesFile(outputFile, course.getName());
+        CourseGradesWriter.writeGradesFile(outputFile, course.getName(), usePercentage);
     }
 }

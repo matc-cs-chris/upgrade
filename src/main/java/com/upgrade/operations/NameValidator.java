@@ -10,7 +10,7 @@ public class NameValidator {
 
         for(Section section: course.getSections()) {
             for(Student student: section.getStudents()) {
-                if(student.getLastNameZybooks() == null || student.getFirstNameZybooks() == null) continue;
+                if(student.getIdZybooks().equals("NONE") || student.getLastNameZybooks() == null || student.getFirstNameZybooks() == null) continue;
 
                 String usernameBrightspace =
                         student.getUsernameBrightSpace().replaceAll("#", "").toUpperCase();

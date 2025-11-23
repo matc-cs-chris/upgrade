@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 public class CourseGradesWriter {
     //TODO
-    public static void writeGradesFile(File outFile, String courseName) {
+    public static void writeGradesFile(File outFile, String courseName, boolean usePercentages) {
         String saveFileName = outFile.getAbsolutePath();
         saveFileName += File.separator;
 
@@ -36,7 +36,7 @@ public class CourseGradesWriter {
 
         //TODO - form and print excel table
 
-        ExcelTable table = new ExcelTable(course);
+        ExcelTable table = new ExcelTable(course, usePercentages);
         table.write(outFile);
 
         System.out.println("Course " + courseName + " has been written to: " + outFile.getAbsolutePath());

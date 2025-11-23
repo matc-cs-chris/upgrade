@@ -17,7 +17,7 @@ public class ZybooksAssignmentsIngestor {
     private static boolean haveAddedOneStudent = false;
 
     public static void parseGrades(Course course, String endColumnText,
-                                   File zybooksAssignmentsSummaryFile, File outFile) {
+                                   File zybooksAssignmentsSummaryFile) {
             String[] headerColumns = null;
             String[] assignmentNames = null;
             double[] totalPoints = null;
@@ -73,7 +73,7 @@ public class ZybooksAssignmentsIngestor {
         if(Grade.getAllCategoriesToNames() == null) Grade.setAllCategoriesToNames(new HashMap<>());
         if(studentMatch.getCategoryToGrades() == null) studentMatch.setCategoryToGrades(new HashMap<>());
 
-        for(int i = startColumn; i <= endColumn - 1; i++) {
+        for(int i = startColumn; i <= endColumn; i++) {
             String gradeName = gradeNames[i];
             double totalPoint = totalPoints[i];
 
@@ -100,7 +100,7 @@ public class ZybooksAssignmentsIngestor {
                 }
 
                 for(GradeCategory gradeCategory : gradeCategories) {
-                    if (gradeName.contains(gradeCategory.getName())) {
+                    if (gradeName.toUpperCase().contains(gradeCategory.getName().toUpperCase())) {
                         if(!Grade.getAllCategoriesToNames().containsKey(gradeCategory)) {
                             Grade.getAllCategoriesToNames().put(gradeCategory, new ArrayList<>());
                         }
@@ -119,8 +119,6 @@ public class ZybooksAssignmentsIngestor {
                 }
 
                 assert grade.getGradeCategory() != null;
-
-
             }
         }
 

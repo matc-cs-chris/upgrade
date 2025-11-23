@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class ExcelTable {
     Course course;
@@ -27,7 +28,7 @@ public class ExcelTable {
 
     int currentRow;
 
-    public ExcelTable(Course course) {
+    public ExcelTable(Course course, boolean usePercentages) {
         this.course = course;
         rowColumnValues = new ArrayList<>();
 
@@ -65,7 +66,8 @@ public class ExcelTable {
                     for(int gradeNumber = 0; gradeNumber < grades.size(); gradeNumber++) {
                         Grade grade = grades.get(gradeNumber);
 
-                        row[currentColumnIndex] = Double.toString(grade.getPointsReceived());
+                        if(usePercentages) row[currentColumnIndex] = Double.toString(grade.getPercentageReceived());
+                        else row[currentColumnIndex] = Double.toString(grade.getPointsReceived());
 
                         totalPoints += grade.getTotalPoints();
 
