@@ -20,7 +20,8 @@ Using 1 one-time setup config.xml and 1 export from Zybooks per book, you can pr
 12) This output should have everything you need to easily copy into imports for brightspace! :)
 
 -Possible Future Features-
-1) ignore validation warnings for certain students
-2) print out a report of just one student (FERPA-friendly)
-3) a csv you can directly plug into brightspace import
-4) etc.
+1) all console input in GUI
+2) ignore validation warnings for certain students
+3) print out a report of just one student (FERPA-friendly)
+4) a csv you can directly plug into brightspace import
+5) etc.
