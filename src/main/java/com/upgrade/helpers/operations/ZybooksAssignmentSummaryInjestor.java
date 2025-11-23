@@ -11,11 +11,11 @@ import com.upgrade.model.general.Student;
 import java.io.File;
 import java.io.IOException;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class ZybooksAssignmentSummaryInjestor {
+    private static boolean haveAddedOneStudent = false;
+
     public static void parseGrades(Course course, String endColumnText,
                                    File zybooksAssignmentsSummaryFile, File outFile) {
             String[] headerColumns = null;
@@ -69,16 +69,17 @@ public class ZybooksAssignmentSummaryInjestor {
     private static void createGrades(Student studentMatch, String[] gradeNames,
                                      int[] totalPoints, String[] columns, int startColumn, int endColumn) {
 
-        if(Grade.getAllNames() == null) Grade.setAllNames(new ArrayList<>());
-        if(studentMatch.getGrades() == null) studentMatch.setGrades(new ArrayList<>());
+        if(Grade.getAllCategoriesToNames() == null) Grade.setAllCategoriesToNames(new HashMap<>());
+        if(studentMatch.getCategoryToGrades() == null) studentMatch.setCategoryToGrades(new HashMap<>());
 
         for(int i = startColumn; i <= endColumn; i++) {
             String gradeName = gradeNames[i];
             int totalPoint = totalPoints[i];
 
-            if(gradeName != null) {
-                Grade.getAllNames().add(gradeName);
+            LinkedList<GradeCategory> gradeCategories =
+                    studentMatch.getSection().getCourse().getCourseConfig().getGradeCategories();
 
+            if(gradeName != null) {
                 Grade grade = new Grade();
                 grade.setStudent(studentMatch);
                 grade.setAssignmentName(gradeName);
@@ -94,19 +95,31 @@ public class ZybooksAssignmentSummaryInjestor {
                     System.exit(1);
                 }
 
-                LinkedList<GradeCategory> gradeCategories =
-                        studentMatch.getSection().getCourse().getCourseConfig().getGradeCategories();
-
                 for(GradeCategory gradeCategory : gradeCategories) {
                     if (gradeName.contains(gradeCategory.getName())) {
+                        if(!Grade.getAllCategoriesToNames().containsKey(gradeCategory)) {
+                            Grade.getAllCategoriesToNames().put(gradeCategory, new ArrayList<>());
+                        }
+
+                        if(!studentMatch.getCategoryToGrades().containsKey(gradeCategory)) {
+                            studentMatch.getCategoryToGrades().put(gradeCategory, new ArrayList<>());
+                        }
+
                         grade.setGradeCategory(gradeCategory);
+
+                        if(!haveAddedOneStudent) {
+                            Grade.getAllCategoriesToNames().get(gradeCategory).add(grade.getAssignmentName());
+                        }
+                        studentMatch.getCategoryToGrades().get(gradeCategory).add(grade);
                     }
                 }
 
-                studentMatch.getGrades().add(grade);
-
                 assert grade.getGradeCategory() != null;
+
+
             }
         }
+
+        haveAddedOneStudent = true;
     }
 }

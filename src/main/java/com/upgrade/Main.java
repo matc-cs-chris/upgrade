@@ -4,6 +4,7 @@ import com.upgrade.helpers.ExcelHelper;
 import com.upgrade.helpers.FileHelper;
 import com.upgrade.helpers.SearchHelper;
 import com.upgrade.helpers.operations.ConfigInjestor;
+import com.upgrade.helpers.operations.CourseGradesWriter;
 import com.upgrade.helpers.operations.ZybooksAssignmentSummaryInjestor;
 import com.upgrade.model.general.Course;
 
@@ -75,7 +76,6 @@ public class Main {
             lasOutputFileDir = new File(scan2.next());
         }
         catch (IOException ex) {
-
             System.out.println("Error while creating last files");
             System.exit(1);
         }
@@ -98,5 +98,7 @@ public class Main {
             System.out.println("Error while saving last files");
             System.exit(1);
         }
+
+        CourseGradesWriter.writeGradesFile(outputFile, course.getName());
     }
 }

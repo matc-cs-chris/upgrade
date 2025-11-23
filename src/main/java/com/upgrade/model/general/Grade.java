@@ -1,9 +1,12 @@
 package com.upgrade.model.general;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.TreeMap;
 
 public class Grade {
-    private static ArrayList<String> allNames;
+    private static HashMap<GradeCategory, ArrayList<String>> allCategoriesToNames;
 
     private Student student;
     private GradeCategory gradeCategory;
@@ -11,15 +14,25 @@ public class Grade {
     private double totalPoints;
     private double percentagePointsReceived;
 
-    //Getters/Setters Below
-
-
-    public static ArrayList<String> getAllNames() {
-        return allNames;
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Grade grade)) return false;
+        return Double.compare(totalPoints, grade.totalPoints) == 0 && Double.compare(percentagePointsReceived, grade.percentagePointsReceived) == 0 && Objects.equals(gradeCategory, grade.gradeCategory) && Objects.equals(assignmentName, grade.assignmentName);
     }
 
-    public static void setAllNames(ArrayList<String> allNames) {
-        Grade.allNames = allNames;
+    @Override
+    public int hashCode() {
+        return Objects.hash(gradeCategory, assignmentName, totalPoints, percentagePointsReceived);
+    }
+
+    //Getters/Setters Below
+
+    public static HashMap<GradeCategory, ArrayList<String>> getAllCategoriesToNames() {
+        return allCategoriesToNames;
+    }
+
+    public static void setAllCategoriesToNames(HashMap<GradeCategory, ArrayList<String>> allCategoriesToNames) {
+        Grade.allCategoriesToNames = allCategoriesToNames;
     }
 
     public Student getStudent() {

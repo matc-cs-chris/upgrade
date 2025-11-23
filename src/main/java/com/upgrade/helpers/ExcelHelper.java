@@ -35,12 +35,16 @@ public class ExcelHelper {
     public static String getRowText(String[] columnValues) {
         StringBuilder result = new StringBuilder();
 
+        result.append("\"");
+
         for(int i = 0; i < columnValues.length; i++) {
-            if(!columnValues.equals("") && !columnValues.equals(null)) {
+            if(columnValues[i] != null && !columnValues[i].equals("")) {
                 result.append(columnValues[i]);
             }
+            else result.append("");
 
-            if(i != columnValues.length - 1) { result.append(","); }
+            result.append("\"");
+            if(i != columnValues.length - 1) { result.append(",\""); }
         }
 
         return result.toString();

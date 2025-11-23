@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class RegexHelper {
     private static final String ASSIGNMENT_COLUMN_HEADER_REGEX =
-            "\\s*(.+)\\s+\\((\\d+)\\)";
+            "\\s*(.+)\\s+\\((\\d+\\.?\\d*)\\)";
     private static final int ASSIGNMENT_NAME_REGEX_GROUP = 1;
     private static final int TOTAL_POINTS_REGEX_GROUP = 2;
 
