@@ -2,7 +2,7 @@ README - UpGrade Application
 
 -Goal-
 
-Using 1 constant class config and 1 export from Zybooks, you can produce a .csv file with all the info you need to paste into BrightSpace for grading 
+Using 1 one-time setup config.xml and 1 export from Zybooks per book, you can produce a .csv file with all the info you need to paste into BrightSpace for grading 
 
 -Instructions-
 
