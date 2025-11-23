@@ -1,9 +1,11 @@
 README - UpGrade Application
 
 -Goal-
+
 Using 1 constant class config and 1 export from Zybooks, you can produce a .csv file with all the info you need to paste into BrightSpace for grading 
 
 -Instructions-
+
 1) Ensure your assignments in ZyBooks are split by PAs, CAs, Labs-only (so 3 assignments a week)
 2) Download a .csv report of all ZyBooks assignments to get zybooks student ids
 3) Download a .csv report of the brightspace grades of all your sections to get brightspace usernames for students
