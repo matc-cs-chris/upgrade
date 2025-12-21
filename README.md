@@ -6,18 +6,21 @@ Using 1 one-time setup config.xml and 1 export from Zybooks per book, you can pr
 
 -Instructions-
 
+One Time Setup:
 1) Ensure your assignments in ZyBooks are split by PAs, CAs, Labs-only (so 3 assignments a week)
 2) Download a .csv report of all ZyBooks assignments to get zybooks student ids
 3) Download a .csv report of the brightspace grades of all your sections to get brightspace usernames for students
 4) Setup /src/main/resources/com/upgrade/config.xml to match your classes/sections
 5) In config.xml, you'll match bs_usernames to zy_ids per student, specify the order of students in your brightspace sections, etc.
-6) After correct setup, run /src/main/java/Main (you could fork into a new IntelliJ project)
-7) Console input choices: process to run, percentages/points, column letters, course to report on
-8) Then 2 GUI filechoosers will show up. The first is to select the export from Zybooks. The second is what directory you want to output to.
-9) The filechoosers may appear behind current windows, sorry, but they will remember past choices
-10) Watch the console, it may warn that some student setup should be verified
-11) Once done, the program will say it's complete and provide a filepath to the .csv you've created
-12) This output should have everything you need to easily copy into imports for brightspace! :)
+
+Usual Program Run:
+1) After correct setup, run /src/main/java/Main (you could fork into a new IntelliJ project)
+2) Console input choices: process to run, percentages/points, column letters, course to report on
+3) Then 2 GUI filechoosers will show up. The first is to select the export from Zybooks. The second is what directory you want to output to.
+4) The filechoosers may appear behind current windows, sorry, but they will remember past choices
+5) Watch the console, it may warn that some student setup should be verified
+6) Once done, the program will say it's complete and provide a filepath to the .csv you've created
+7) This output should have everything you need to easily copy into imports for brightspace! :)
 
 -Possible Future Features-
 1) all console input in GUI
