@@ -112,7 +112,8 @@ public class ZybooksAssignmentsIngestor {
                         grade.setGradeCategory(gradeCategory);
 
                         if(!haveAddedOneStudent) {
-                            Grade.getAllCategoriesToNames().get(gradeCategory).add(grade.getAssignmentName());
+                            Grade.getAllCategoriesToNames().get(gradeCategory).add(grade.getAssignmentName() +
+                                    "(total: " + grade.getTotalPoints() + ")");
                         }
                         studentMatch.getCategoryToGrades().get(gradeCategory).add(grade);
                     }
