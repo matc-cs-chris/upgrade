@@ -66,6 +66,9 @@ public class Main {
                 usePercentage = true;
         }
 
+        System.out.println("Choose Number of Assignments to Drop:");
+        int numAssignmentsDropped = consoleScanner.nextInt();
+
         System.out.println("Enter End Column Letter Code: ");
         String endColumn = consoleScanner.next().toUpperCase();
 
@@ -125,6 +128,6 @@ public class Main {
             System.exit(1);
         }
 
-        CourseGradesWriter.writeGradesFile(outputFile, course.getName(), usePercentage);
+        CourseGradesWriter.writeGradesFile(outputFile, course.getName(), usePercentage, numAssignmentsDropped);
     }
 }
