@@ -20,28 +20,28 @@
                     <students>
                         <!-- students need not be in order, but it's easier while you associate student records -->
                         <!-- <student bs_username="NONE" zy_id="NONE"/> -->
-                        <student bs_username="#kshogren" zy_id="NONE"/>
-                        <student bs_username="#hyafai1" zy_id="NONE"/>
-                        <student bs_username="#jticali" zy_id="NONE"/>
-                        <student bs_username="#ptrevino" zy_id="NONE"/>
-                        <student bs_username="#gwampler" zy_id="NONE"/>
-                        <student bs_username="#adiallo12" zy_id="NONE"/>
-                        <student bs_username="#jmann8" zy_id="NONE"/>
-                        <student bs_username="#salfonzo" zy_id="NONE"/>
-                        <student bs_username="#lbargman" zy_id="NONE"/>
-                        <student bs_username="#mackerman5" zy_id="NONE"/>
-                        <student bs_username="#ppryne" zy_id="NONE"/>
-                        <student bs_username="#mfernandezzaragoza" zy_id="NONE"/>
-                        <student bs_username="#thakem" zy_id="NONE"/>
-                        <student bs_username="#ejammeh1" zy_id="NONE"/>
-                        <student bs_username="#ggruba1" zy_id="NONE"/>
-                        <student bs_username="#ftozzohra" zy_id="NONE"/>
-                        <student bs_username="#sinan" zy_id="NONE"/>
-                        <student bs_username="#kbaker19" zy_id="NONE"/>
+                        <student bs_username="#kshogren" zy_id="3029390"/>
+                        <student bs_username="#hyafai1" zy_id="3085949"/>
+                        <student bs_username="#jticali" zy_id="2969531"/>
+                        <student bs_username="#ptrevino" zy_id="3090593"/>
+                        <student bs_username="#gwampler" zy_id="3099763"/>
+                        <student bs_username="#adiallo12" zy_id="3111847"/>
+                        <student bs_username="#jmann8" zy_id="3117 757"/>
+                        <student bs_username="#salfonzo" zy_id="3123030"/>
+                        <student bs_username="#lbargman" zy_id="3092338"/>
+                        <student bs_username="#mackerman5" zy_id="3020832"/>
+                        <student bs_username="#ppryne" zy_id="3139067"/>
+                        <student bs_username="#mfernandezzaragoza" zy_id="3043081"/>
+                        <student bs_username="#thakem" zy_id="3116624"/>
+                        <student bs_username="#ejammeh1" zy_id="3043335"/>
+                        <student bs_username="#ggruba1" zy_id="3115500"/>
+                        <student bs_username="#ftozzohra" zy_id="3077375"/>
+                        <student bs_username="#sinan" zy_id="3082333"/>
+                        <student bs_username="#kbaker19" zy_id="3127764"/>
                         <student bs_username="#demo.student_1268_64310" zy_id="NONE"/>
-                        <student bs_username="#jmanning1" zy_id="NONE"/>
-                        <student bs_username="#qcclark" zy_id="NONE"/>
-                        <student bs_username="#plaska" zy_id="NONE"/>
+                        <student bs_username="#jmanning1" zy_id="3122 972"/>
+                        <student bs_username="#qcclark" zy_id="2935136"/>
+                        <student bs_username="#plaska" zy_id="2977232"/>
                     </students>
                     <section_config>
                         <section_bs_config>
@@ -77,10 +77,10 @@
                     <students>
                         <!-- students need not be in order, but it's easier while you associate student records -->
                         <!-- <student bs_username="NONE" zy_id="NONE"/> -->
-                        <student bs_username="#azietlow1" zy_id="NONE"/>
-                        <student bs_username="#jkrzystof1" zy_id="NONE"/>
+                        <student bs_username="#azietlow1" zy_id="2912547"/>
+                        <student bs_username="#jkrzystof1" zy_id="3087120"/>
                         <student bs_username="#demo.student_1268_64312" zy_id="NONE"/>
-                        <student bs_username="#mjohnston7" zy_id="NONE"/>
+                        <student bs_username="#mjohnston7" zy_id="3093972"/>
                     </students>
                     <section_config>
                         <section_bs_config>
@@ -116,21 +116,21 @@
                     <students>
                         <!-- students need not be in order, but it's easier while you associate student records -->
                         <!-- <student bs_username="NONE" zy_id="NONE"/> -->
-                        <student bs_username="#aonderak" zy_id="NONE"/>
-                        <student bs_username="#tsmith72" zy_id="NONE"/>
-                        <student bs_username="#snjie7" zy_id="NONE"/>
-                        <student bs_username="#ppalety1" zy_id="NONE"/>
-                        <student bs_username="#mkirkpatrick2" zy_id="NONE"/>
-                        <student bs_username="#wschroeder2" zy_id="NONE"/>
-                        <student bs_username="#jbiju" zy_id="NONE"/>
-                        <student bs_username="#mfalcon1" zy_id="NONE"/>
-                        <student bs_username="#inguyen1" zy_id="NONE"/>
-                        <student bs_username="#aramdani" zy_id="NONE"/>
-                        <student bs_username="#pstrenge1" zy_id="NONE"/>
-                        <student bs_username="#psheridan" zy_id="NONE"/>
-                        <student bs_username="#brehm1" zy_id="NONE"/>
-                        <student bs_username="#sbuttner" zy_id="NONE"/>
-                        <student bs_username="#nsorensen2" zy_id="NONE"/>
+                        <student bs_username="#aonderak" zy_id="3120894"/>
+                        <student bs_username="#tsmith72" zy_id="3095306"/>
+                        <student bs_username="#snjie7" zy_id="3098101"/>
+                        <student bs_username="#ppalety1" zy_id="3129194"/>
+                        <student bs_username="#mkirkpatrick2" zy_id="3124123"/>
+                        <student bs_username="#wschroeder2" zy_id="3035630"/>
+                        <student bs_username="#jbiju" zy_id="310096"/>
+                        <student bs_username="#mfalcon1" zy_id="3087110"/>
+                        <student bs_username="#inguyen1" zy_id="3042326"/>
+                        <student bs_username="#aramdani" zy_id="3053791"/>
+                        <student bs_username="#pstrenge1" zy_id="3081991"/>
+                        <student bs_username="#psheridan" zy_id="3086063"/>
+                        <student bs_username="#brehm1" zy_id="3087983"/>
+                        <student bs_username="#sbuttner" zy_id="3097941"/>
+                        <student bs_username="#nsorensen2" zy_id="3084268"/>
                         <student bs_username="#demo.student_1268_64314" zy_id="NONE"/>
                         <student bs_username="#amebert" zy_id="NONE"/>
                     </students>
@@ -163,14 +163,14 @@
                     <students>
                         <!-- students need not be in order, but it's easier while you associate student records -->
                         <!-- <student bs_username="NONE" zy_id="NONE"/> -->
-                        <student bs_username="#bliu4" zy_id="NONE"/>
-                        <student bs_username="#emosher1" zy_id="NONE"/>
-                        <student bs_username="#anovak3" zy_id="NONE"/>
-                        <student bs_username="#dher4" zy_id="NONE"/>
-                        <student bs_username="#jdavis72" zy_id="NONE"/>
-                        <student bs_username="#msandwickschroeder" zy_id="NONE"/>
+                        <student bs_username="#bliu4" zy_id="3105215"/>
+                        <student bs_username="#emosher1" zy_id="3087790"/>
+                        <student bs_username="#anovak3" zy_id="3074529"/>
+                        <student bs_username="#dher4" zy_id="3111526"/>
+                        <student bs_username="#jdavis72" zy_id="3128899"/>
+                        <student bs_username="#msandwickschroeder" zy_id="3092683"/>
                         <student bs_username="#demo.student_1268_64316" zy_id="NONE"/>
-                        <student bs_username="#nfeagan" zy_id="NONE"/>
+                        <student bs_username="#nfeagan" zy_id="3066598"/>
                     </students>
                     <section_config>
                         <section_bs_config>
