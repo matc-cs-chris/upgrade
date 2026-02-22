@@ -8,17 +8,20 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 public class ExcelTable {
     Course course;
     ArrayList<String[]> rowColumnValues;
+    ArrayList<String[]> rowColumnFullText;
     int width;
     int height;
 
     int[] receivedPointsIndex;
     int[] possiblePointsIndex;
     int[] percentageGradeIndex;
+    int[] adjustedReceivedPointsIndex;
+    int[] adjustedPossiblePointsIndex;
+    int[] adjustedPercentageGradeIndex;
 
     int individualGradesStartIndex;
     int[] gradeCategoryStartIndex;
@@ -26,9 +29,7 @@ public class ExcelTable {
 
     GradeCategory[] gradeCategories;
 
-    int currentRow;
-
-    public ExcelTable(Course course, boolean usePercentages) {
+    public ExcelTable(Course course, boolean usePercentages, int numDropMinGrades) {
         this.course = course;
         rowColumnValues = new ArrayList<>();
 
@@ -43,48 +44,100 @@ public class ExcelTable {
             rowColumnValues.add(new String[width]);
 
             for(Student student : section.getStudents()) {
-                String[] row = new String[width];
+                String[] rows = new String[width];
+                String[] rowComments = new String[width];
 
-                row[0] = student.getUsernameBrightSpace();
-                row[1] = student.getIdZybooks();
-                row[2] = student.getLastNameZybooks();
-                row[3] = student.getFirstNameZybooks();
-
+                rows[0] = student.getUsernameBrightSpace();
+                rows[1] = student.getIdZybooks();
+                rows[2] = student.getLastNameZybooks();
+                rows[3] = student.getFirstNameZybooks();
 
                 for(int categoryNumber = 0; categoryNumber < gradeCategories.length; categoryNumber++) {
                     GradeCategory gradeCategory = gradeCategories[categoryNumber];
 
-
-
                     int currentColumnIndex = gradeCategoryStartIndex[categoryNumber];
                     double totalPoints = 0;
                     double receivedPoints = 0;
+                    double adjustedPoints = 0;
 
                     if(student.getCategoryToGrades() == null) continue; //gets rid of demo student
 
+
+
                     ArrayList<Grade> grades = student.getCategoryToGrades().get(gradeCategory);
+
+                    ArrayList<Grade> droppedGrades = getDroppedGrades(grades, numDropMinGrades);
+
                     for(int gradeNumber = 0; gradeNumber < grades.size(); gradeNumber++) {
                         Grade grade = grades.get(gradeNumber);
 
-                        if(usePercentages) row[currentColumnIndex] = Double.toString(grade.getPercentageReceived());
-                        else row[currentColumnIndex] = Double.toString(grade.getPointsReceived());
+                        if(droppedGrades.contains(grade)) {
+                            if (usePercentages) {
+                                rows[currentColumnIndex] = "100.0";
+                                rowComments[currentColumnIndex] =
+                                        "(was " + Double.toString(grade.getPercentageReceived()) + ")";
+                            } else {
+                                rows[currentColumnIndex] = Double.toString(grade.getTotalPoints());
+                                rowComments[currentColumnIndex] =
+                                        "(was " + Double.toString(grade.getPointsReceived()) + ")";
+                            }
+
+                            adjustedPoints += grade.getTotalPoints();
+                            droppedGrades.remove(grade); //minor optimization
+                        }
+                        else {
+                            if (usePercentages)
+                                rows[currentColumnIndex] = Double.toString(grade.getPercentageReceived());
+                            else rows[currentColumnIndex] = Double.toString(grade.getPointsReceived());
+
+                            rowComments[currentColumnIndex] = "";
+                        }
 
                         totalPoints += grade.getTotalPoints();
 
-
                         receivedPoints += grade.getPointsReceived();
+
+
 
                         currentColumnIndex++;
                     }
 
-                    row[receivedPointsIndex[categoryNumber]] = Double.toString(receivedPoints);
-                    row[possiblePointsIndex[categoryNumber]] = Double.toString(totalPoints);
-                    row[percentageGradeIndex[categoryNumber]] = Double.toString(receivedPoints*100.0/totalPoints);
+                    rows[receivedPointsIndex[categoryNumber]] = Double.toString(receivedPoints);
+                    rows[possiblePointsIndex[categoryNumber]] = Double.toString(totalPoints);
+                    rows[percentageGradeIndex[categoryNumber]] = Double.toString(receivedPoints*100.0/totalPoints);
+
+                    rows[adjustedReceivedPointsIndex[categoryNumber]] = Double.toString(adjustedPoints);
+                    rows[adjustedPossiblePointsIndex[categoryNumber]] = Double.toString(totalPoints);
+                    rows[adjustedPercentageGradeIndex[categoryNumber]] =
+                            Double.toString(adjustedPoints*100.0/totalPoints);
                 }
 
-                rowColumnValues.add(row);
+                rowColumnValues.add(rows);
+                rowColumnFullText.add(rowComments);
             }
         }
+    }
+
+    private ArrayList<Grade> getDroppedGrades(ArrayList<Grade> grades, int numDropMinGrades) {
+        ArrayList<Grade> droppedGrades = new ArrayList<Grade>();
+
+        for (int gradeNumber = 0; gradeNumber < grades.size(); gradeNumber++) {
+            Grade grade = grades.get(gradeNumber);
+
+            double diffReceivedAndPossiblePoints = grade.getTotalPoints() - grade.getPointsReceived();
+
+            for(int droppedGradesIndex = 0; droppedGradesIndex < numDropMinGrades; droppedGradesIndex++) {
+                Grade storedMaxGrade = droppedGrades.get(droppedGradesIndex);
+                double storedGradeDiff =  storedMaxGrade.getTotalPoints() - storedMaxGrade.getPointsReceived();
+
+                if(diffReceivedAndPossiblePoints > storedGradeDiff) {
+                    droppedGrades.set(droppedGradesIndex, grade);
+                    break;
+                }
+            }
+        }
+
+        return droppedGrades;
     }
 
     private String[] getHeaderColumn() {
@@ -92,7 +145,7 @@ public class ExcelTable {
         gradeCategories = config.getGradeCategories().toArray(
                 new GradeCategory[config.getGradeCategories().size()]);
 
-        width = getMapDimensions(Grade.getAllCategoriesToNames()) + gradeCategories.length * 4 + 10;
+        width = getMapDimensions(Grade.getAllCategoriesToNames()) + gradeCategories.length * 4 + 20;
         String[] columns = new String[width];
 
         columns[0] = "BrightSpace Username";
@@ -108,6 +161,10 @@ public class ExcelTable {
         possiblePointsIndex = new int[gradeCategories.length];
         percentageGradeIndex = new int[gradeCategories.length];
 
+        adjustedReceivedPointsIndex = new int[gradeCategories.length];
+        adjustedPossiblePointsIndex = new int[gradeCategories.length];
+        adjustedPercentageGradeIndex = new int[gradeCategories.length];
+
         for(GradeCategory gradeCategory : gradeCategories) {
             receivedPointsIndex[categoryIndex] = currentColumnIndex;
             columns[currentColumnIndex] = "Received " + gradeCategory.getName() + " Points";
@@ -119,6 +176,23 @@ public class ExcelTable {
 
             percentageGradeIndex[categoryIndex] = currentColumnIndex;
             columns[currentColumnIndex] = "Percentage " + gradeCategory.getName() + " Grade";
+            currentColumnIndex++;
+            currentColumnIndex++;
+
+            categoryIndex++;
+        }
+
+        for(GradeCategory gradeCategory : gradeCategories) {
+            adjustedReceivedPointsIndex[categoryIndex] = currentColumnIndex;
+            columns[currentColumnIndex] = "Adjusted " + gradeCategory.getName() + " Points";
+            currentColumnIndex++;
+
+            adjustedPossiblePointsIndex[categoryIndex] = currentColumnIndex;
+            columns[currentColumnIndex] = "Adjusted Possible " + gradeCategory.getName() + " Points";
+            currentColumnIndex++;
+
+            adjustedPercentageGradeIndex[categoryIndex] = currentColumnIndex;
+            columns[currentColumnIndex] = "Adjusted Percentage " + gradeCategory.getName() + " Grade";
             currentColumnIndex++;
             currentColumnIndex++;
 
@@ -151,7 +225,7 @@ public class ExcelTable {
     public void write(File outFile) {
         try(PrintWriter out = new PrintWriter(outFile)) {
             for(int i = 0; i < rowColumnValues.size(); i++) {
-                out.println(ExcelHelper.getRowText(rowColumnValues.get(i)));
+                out.println(ExcelHelper.getRowText(rowColumnValues.get(i)) + rowColumnFullText.get(i));
             }
         }
         catch(Exception e) {

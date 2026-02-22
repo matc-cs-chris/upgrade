@@ -5,8 +5,8 @@
             <course_config>
                 <grade_categories>
                     <grade_category name="PAs" weight_percentage="5.0"/>
-                    <grade_category name="CAs" weight_percentage="5.0"/>
-                    <grade_category name="Labs" weight_percentage="35.0"/>
+                    <grade_category name="CAs" weight_percentage="10.0"/>
+                    <grade_category name="Labs" weight_percentage="30.0"/>
                 </grade_categories>
                 <course_zy_config>
                     <grade_start_column column="F"/>
@@ -20,41 +20,76 @@
                     <students>
                         <!-- students need not be in order, but it's easier while you associate student records -->
                         <!-- <student bs_username="NONE" zy_id="NONE"/> -->
-                        <student bs_username="#acovarrubiasgarcia" zy_id="3071039"/>
-                        <student bs_username="#amirambeaux" zy_id="3052264"/>
-                        <student bs_username="#bcampbell10" zy_id="NONE"/>
-                        <student bs_username="#brehm1" zy_id="3087983"/>
-                        <student bs_username="#demo.student_1264_34816" zy_id="NONE"/>
-                        <student bs_username="#idavel" zy_id="3082898"/>
-                        <student bs_username="#imoore7" zy_id="3122255"/>
-                        <student bs_username="#lnowak2" zy_id="3061526"/>
-                        <student bs_username="#lphillips8" zy_id="3039941"/>
-                        <student bs_username="#lsalt" zy_id="3118069"/>
-                        <student bs_username="#mlucassen" zy_id="3083700"/>
-                        <student bs_username="#ppalety1" zy_id="3129194"/>
-                        <student bs_username="#rnicholson" zy_id="3101958"/>
-                        <student bs_username="#sgermundson" zy_id="3117391"/>
-                        <student bs_username="#tsmith72" zy_id="3095306"/>
+                        <student bs_username="#kshogren" zy_id="NONE"/>
+                        <student bs_username="#hyafai1" zy_id="NONE"/>
+                        <student bs_username="#jticali" zy_id="NONE"/>
+                        <student bs_username="#ptrevino" zy_id="NONE"/>
+                        <student bs_username="#gwampler" zy_id="NONE"/>
+                        <student bs_username="#adiallo12" zy_id="NONE"/>
+                        <student bs_username="#jmann8" zy_id="NONE"/>
+                        <student bs_username="#salfonzo" zy_id="NONE"/>
+                        <student bs_username="#lbargman" zy_id="NONE"/>
+                        <student bs_username="#mackerman5" zy_id="NONE"/>
+                        <student bs_username="#ppryne" zy_id="NONE"/>
+                        <student bs_username="#mfernandezzaragoza" zy_id="NONE"/>
+                        <student bs_username="#thakem" zy_id="NONE"/>
+                        <student bs_username="#ejammeh1" zy_id="NONE"/>
+                        <student bs_username="#ggruba1" zy_id="NONE"/>
+                        <student bs_username="#ftozzohra" zy_id="NONE"/>
+                        <student bs_username="#sinan" zy_id="NONE"/>
+                        <student bs_username="#kbaker19" zy_id="NONE"/>
+                        <student bs_username="#demo.student_1268_64310" zy_id="NONE"/>
+                        <student bs_username="#jmanning1" zy_id="NONE"/>
+                        <student bs_username="#qcclark" zy_id="NONE"/>
+                        <student bs_username="#plaska" zy_id="NONE"/>
                     </students>
                     <section_config>
                         <section_bs_config>
                             <username_order>
                                 <!-- the order usernames appear in a brightspace csv export -->
-                                #acovarrubiasgarcia,
-                                #amirambeaux,
-                                #bcampbell10,
-                                #brehm1,
-                                #demo.student_1264_34816,
-                                #idavel,
-                                #imoore7,
-                                #lnowak2,
-                                #lphillips8,
-                                #lsalt,
-                                #mlucassen,
-                                #ppalety1,
-                                #rnicholson,
-                                #sgermundson,
-                                #tsmith72
+                                #kshogren,
+                                #hyafai1,
+                                #jticali,
+                                #ptrevino,
+                                #gwampler,
+                                #adiallo12,
+                                #jmann8,
+                                #salfonzo,
+                                #lbargman,
+                                #mackerman5,
+                                #ppryne,
+                                #mfernandezzaragoza,
+                                #thakem,
+                                #ejammeh1,
+                                #ggruba1,
+                                #ftozzohra,
+                                #sinan,
+                                #kbaker19,
+                                #demo.student_1268_64310,
+                                #jmanning1,
+                                #qcclark,
+                                #plaska
+                            </username_order>
+                        </section_bs_config>
+                    </section_config>
+                </section>
+                <section name="CS1 In-Person">
+                    <students>
+                        <!-- students need not be in order, but it's easier while you associate student records -->
+                        <!-- <student bs_username="NONE" zy_id="NONE"/> -->
+                        <student bs_username="#azietlow1" zy_id="NONE"/>
+                        <student bs_username="#jkrzystof1" zy_id="NONE"/>
+                        <student bs_username="#demo.student_1268_64312" zy_id="NONE"/>
+                        <student bs_username="#mjohnston7" zy_id="NONE"/>
+                    </students>
+                    <section_config>
+                        <section_bs_config>
+                            <username_order>
+                                <!-- the order usernames appear in a brightspace csv export -->
+                                #azietlow1,
+                                #jkrzystof1,
+                                #demo.student_1268_64312,
+                                #mjohnston7
                             </username_order>
                         </section_bs_config>
                     </section_config>
@@ -66,8 +101,8 @@
                 <grade_categories>
                     <!-- your assignment names must contain one of these category names -->
                     <grade_category name="PAs" weight_percentage="5.0"/>
-                    <grade_category name="CAs" weight_percentage="5.0"/>
-                    <grade_category name="Labs" weight_percentage="40.0"/>
+                    <grade_category name="CAs" weight_percentage="10.0"/>
+                    <grade_category name="Labs" weight_percentage="35.0"/>
                 </grade_categories>
                 <course_zy_config>
                     <grade_start_column column="F"/>
@@ -81,63 +116,45 @@
                     <students>
                         <!-- students need not be in order, but it's easier while you associate student records -->
                         <!-- <student bs_username="NONE" zy_id="NONE"/> -->
-                        <student bs_username="#acurwen" zy_id="3056067"/>
-                        <student bs_username="#alawlor" zy_id="3105169"/>
-                        <student bs_username="#babbas1" zy_id="3050388"/>
-                        <student bs_username="#bwallner" zy_id="3066824"/>
-                        <student bs_username="#cjanko" zy_id="3069407"/>
-                        <student bs_username="#clarson10" zy_id="3043387"/>
-                        <student bs_username="#demo.student_1264_34718" zy_id="NONE"/>
-                        <student bs_username="#DQUIPOT" zy_id="34718"/>
-                        <student bs_username="#echowanec" zy_id="3097514"/>
-                        <student bs_username="#finan" zy_id="3082336"/>
-                        <student bs_username="#gchavez4" zy_id="3070434"/>
-                        <student bs_username="#gpopp" zy_id="3123778"/>
-                        <student bs_username="#hvaneck" zy_id="3118918"/>
-                        <student bs_username="#jthakkar" zy_id="3077337"/>
-                        <student bs_username="#jvineman" zy_id="3115442"/>
-                        <student bs_username="#lcollins10" zy_id="3114840"/>
-                        <student bs_username="#lpulidoduarte" zy_id="3098117"/>
-                        <student bs_username="#mellis9" zy_id="3124810"/>
-                        <student bs_username="#nwineke" zy_id="3125739"/>
-                        <student bs_username="#otse" zy_id="3093529"/>
-                        <student bs_username="#qschnell" zy_id="3049188"/>
-                        <student bs_username="#sdyachenko" zy_id="3054028"/>
-                        <student bs_username="#slukashev" zy_id="3039253"/>
-                        <student bs_username="#TKOKINOS" zy_id="2812114"/>
-                        <student bs_username="#ykuzmych" zy_id="3100364"/>
-                        <student bs_username="#zwentland" zy_id="3120528"/>
+                        <student bs_username="#aonderak" zy_id="NONE"/>
+                        <student bs_username="#tsmith72" zy_id="NONE"/>
+                        <student bs_username="#snjie7" zy_id="NONE"/>
+                        <student bs_username="#ppalety1" zy_id="NONE"/>
+                        <student bs_username="#mkirkpatrick2" zy_id="NONE"/>
+                        <student bs_username="#wschroeder2" zy_id="NONE"/>
+                        <student bs_username="#jbiju" zy_id="NONE"/>
+                        <student bs_username="#mfalcon1" zy_id="NONE"/>
+                        <student bs_username="#inguyen1" zy_id="NONE"/>
+                        <student bs_username="#aramdani" zy_id="NONE"/>
+                        <student bs_username="#pstrenge1" zy_id="NONE"/>
+                        <student bs_username="#psheridan" zy_id="NONE"/>
+                        <student bs_username="#brehm1" zy_id="NONE"/>
+                        <student bs_username="#sbuttner" zy_id="NONE"/>
+                        <student bs_username="#nsorensen2" zy_id="NONE"/>
+                        <student bs_username="#demo.student_1268_64314" zy_id="NONE"/>
+                        <student bs_username="#amebert" zy_id="NONE"/>
                     </students>
                     <section_config>
                         <section_bs_config>
                             <username_order>
                                 <!-- the order usernames appear in a brightspace csv export -->
-                                #acurwen,
-                                #alawlor,
-                                #babbas1,
-                                #bwallner,
-                                #cjanko,
-                                #clarson10,
-                                #demo.student_1264_34718,
-                                #DQUIPOT,
-                                #echowanec,
-                                #finan,
-                                #gchavez4,
-                                #gpopp,
-                                #hvaneck,
-                                #jthakkar,
-                                #jvineman,
-                                #lcollins10,
-                                #lpulidoduarte,
-                                #mellis9,
-                                #nwineke,
-                                #otse,
-                                #qschnell,
-                                #sdyachenko,
-                                #slukashev,
-                                #TKOKINOS,
-                                #ykuzmych,
-                                #zwentland
+                                #aonderak,
+                                #tsmith72,
+                                #snjie7,
+                                #ppalety1,
+                                #mkirkpatrick2,
+                                #wschroeder2,
+                                #jbiju,
+                                #mfalcon1,
+                                #inguyen1,
+                                #aramdani,
+                                #pstrenge1,
+                                #psheridan,
+                                #brehm1,
+                                #sbuttner,
+                                #nsorensen2,
+                                #demo.student_1268_64314,
+                                #amebert
                             </username_order>
                         </section_bs_config>
                     </section_config>
@@ -146,51 +163,27 @@
                     <students>
                         <!-- students need not be in order, but it's easier while you associate student records -->
                         <!-- <student bs_username="NONE" zy_id="NONE"/> -->
-                        <student bs_username="#aallison7" zy_id="3097731"/>
-                        <student bs_username="#atripkovic" zy_id="3122542"/>
-                        <student bs_username="#cgolesh" zy_id="3122734"/>
-                        <student bs_username="#demo.student_1264_34768" zy_id="NONE"/>
-                        <student bs_username="#ebarrow1" zy_id="3095366"/>
-                        <student bs_username="#ggraybar" zy_id="3078531"/>
-                        <student bs_username="#hhooverson" zy_id="3042953"/>
-                        <student bs_username="#hvangilder1" zy_id="3084091"/>
-                        <student bs_username="#itunkara1" zy_id="3099506"/>
-                        <student bs_username="#jpaz2" zy_id="3116466"/>
-                        <student bs_username="#kvang52" zy_id="3120412"/>
-                        <student bs_username="#LXELHUA" zy_id="2876626"/>
-                        <student bs_username="#mmahmood1" zy_id="3102256"/>
-                        <student bs_username="#mvangulik" zy_id="3062782"/>
-                        <student bs_username="#qmattsson" zy_id="2964873"/>
-                        <student bs_username="#rburksjr" zy_id="3093126"/>
-                        <student bs_username="#rtripathi" zy_id="3090380"/>
-                        <student bs_username="#swang10" zy_id="3083668"/>
-                        <student bs_username="#wclutter" zy_id="3066533"/>
-                        <student bs_username="#wtibesso" zy_id="3086670"/>
+                        <student bs_username="#bliu4" zy_id="NONE"/>
+                        <student bs_username="#emosher1" zy_id="NONE"/>
+                        <student bs_username="#anovak3" zy_id="NONE"/>
+                        <student bs_username="#dher4" zy_id="NONE"/>
+                        <student bs_username="#jdavis72" zy_id="NONE"/>
+                        <student bs_username="#msandwickschroeder" zy_id="NONE"/>
+                        <student bs_username="#demo.student_1268_64316" zy_id="NONE"/>
+                        <student bs_username="#nfeagan" zy_id="NONE"/>
                     </students>
                     <section_config>
                         <section_bs_config>
                             <username_order>
                                 <!-- the order usernames appear in a brightspace csv export -->
-                                #aallison7,
-                                #atripkovic,
-                                #cgolesh,
-                                #demo.student_1264_34768,
-                                #ebarrow1,
-                                #ggraybar,
-                                #hhooverson,
-                                #hvangilder1,
-                                #itunkara1,
-                                #jpaz2,
-                                #kvang52,
-                                #LXELHUA,
-                                #mmahmood1,
-                                #mvangulik,
-                                #qmattsson,
-                                #rburksjr,
-                                #rtripathi,
-                                #swang10,
-                                #wclutter,
-                                #wtibesso
+                                #bliu4,
+                                #emosher1,
+                                #anovak3,
+                                #dher4,
+                                #jdavis72,
+                                #msandwickschroeder,
+                                #demo.student_1268_64316,
+                                #nfeagan
                             </username_order>
                         </section_bs_config>
                     </section_config>
