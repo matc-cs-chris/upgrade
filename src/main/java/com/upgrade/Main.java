@@ -91,8 +91,28 @@ public class Main {
         File lastFileSaveDir = new File("lastFileDir.sav");
         File lastOutputFileSaveDir = new File("outputFileDir.sav");
 
+        try {
+            if (!lastFileSaveDir.exists()) {
+                lastOutputFileSaveDir.createNewFile();
+
+                PrintWriter pw = new PrintWriter(lastFileSaveDir);
+                pw.print(System.getProperty("user.dir"));
+                pw.close();
+            }
+            if (!lastOutputFileSaveDir.exists()) {
+                lastOutputFileSaveDir.createNewFile();
+
+                PrintWriter pw = new PrintWriter(lastOutputFileSaveDir);
+                pw.print(System.getProperty("user.dir"));
+                pw.close();
+            }
+        }
+        catch (IOException e) {
+            System.out.println("No permission to create files");
+        }
+
         File lastFileDir = null;
-        File lasOutputFileDir = null;
+        File lastOutputFileDir = null;
 
         try (Scanner scan = new Scanner(lastFileSaveDir);
             Scanner scan2 = new Scanner(lastOutputFileSaveDir)) {
@@ -101,7 +121,7 @@ public class Main {
             if(!lastOutputFileSaveDir.exists()){ lastOutputFileSaveDir.createNewFile(); }
 
             lastFileDir = new File(scan.next());
-            lasOutputFileDir = new File(scan2.next());
+            lastOutputFileDir = new File(scan2.next());
         }
         catch (IOException ex) {
             System.out.println("Error while creating last files");
@@ -110,7 +130,7 @@ public class Main {
 
         //choose files
         File zybooksAssignmentsSummaryFile = FileHelper.getFileFromChooser(lastFileDir, "CSV");
-        File outputFile = FileHelper.getFileFromChooser(lasOutputFileDir, null);
+        File outputFile = FileHelper.getFileFromChooser(lastOutputFileDir, null);
 
         //Parsing here
         ZybooksAssignmentsIngestor.parseGrades(course, endColumn, zybooksAssignmentsSummaryFile);

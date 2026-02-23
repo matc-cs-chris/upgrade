@@ -5,6 +5,7 @@ import com.upgrade.helpers.ExcelHelper;
 import com.upgrade.model.classroom.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,8 +33,10 @@ public class ExcelTable {
     public ExcelTable(Course course, boolean usePercentages, int numDropMinGrades) {
         this.course = course;
         rowColumnValues = new ArrayList<>();
+        rowColumnFullText = new ArrayList<>();
 
         rowColumnValues.add(getHeaderColumn());
+        rowColumnFullText.add(new String[width]);
 
         for (Section section : course.getSections()) {
             String[] sectionHeaderRow = new String[width];
@@ -42,6 +45,10 @@ public class ExcelTable {
             rowColumnValues.add(new String[width]);
             rowColumnValues.add(sectionHeaderRow);
             rowColumnValues.add(new String[width]);
+
+            rowColumnFullText.add(new String[width]);
+            rowColumnFullText.add(new String[width]);
+            rowColumnFullText.add(new String[width]);
 
             for(Student student : section.getStudents()) {
                 String[] rows = new String[width];
@@ -61,8 +68,6 @@ public class ExcelTable {
                     double adjustedPoints = 0;
 
                     if(student.getCategoryToGrades() == null) continue; //gets rid of demo student
-
-
 
                     ArrayList<Grade> grades = student.getCategoryToGrades().get(gradeCategory);
 
@@ -127,6 +132,11 @@ public class ExcelTable {
             double diffReceivedAndPossiblePoints = grade.getTotalPoints() - grade.getPointsReceived();
 
             for(int droppedGradesIndex = 0; droppedGradesIndex < numDropMinGrades; droppedGradesIndex++) {
+                if(droppedGrades.size() < numDropMinGrades) {
+                    droppedGrades.add(grade);
+                    break;
+                }
+
                 Grade storedMaxGrade = droppedGrades.get(droppedGradesIndex);
                 double storedGradeDiff =  storedMaxGrade.getTotalPoints() - storedMaxGrade.getPointsReceived();
 
@@ -182,6 +192,8 @@ public class ExcelTable {
             categoryIndex++;
         }
 
+        categoryIndex = 0;
+
         for(GradeCategory gradeCategory : gradeCategories) {
             adjustedReceivedPointsIndex[categoryIndex] = currentColumnIndex;
             columns[currentColumnIndex] = "Adjusted " + gradeCategory.getName() + " Points";
@@ -228,7 +240,7 @@ public class ExcelTable {
                 out.println(ExcelHelper.getRowText(rowColumnValues.get(i)) + rowColumnFullText.get(i));
             }
         }
-        catch(Exception e) {
+        catch(IOException e) {
             System.out.println("Something went wrong writing the table");
             System.exit(1);
         }
