@@ -78,28 +78,32 @@ public class ExcelTable {
 
                         if(droppedGrades.contains(grade)) {
                             if (usePercentages) {
-                                rows[currentColumnIndex] = "100.0";
                                 rowComments[currentColumnIndex] =
-                                        "(was " + Double.toString(grade.getPercentageReceived()) + ")";
+                                        " (was " + Double.toString(grade.getPercentageReceived()) + ")";
+                                rows[currentColumnIndex] = "100.0" + rowComments[currentColumnIndex];
                             } else {
-                                rows[currentColumnIndex] = Double.toString(grade.getTotalPoints());
                                 rowComments[currentColumnIndex] =
-                                        "(was " + Double.toString(grade.getPointsReceived()) + ")";
+                                        " (was " + Double.toString(grade.getPointsReceived()) + ")";
+                                rows[currentColumnIndex] = Double.toString(grade.getTotalPoints()) +
+                                        rowComments[currentColumnIndex];
                             }
 
                             adjustedPoints += grade.getTotalPoints();
                             droppedGrades.remove(grade); //minor optimization
                         }
                         else {
-                            if (usePercentages)
+                            if (usePercentages) {
                                 rows[currentColumnIndex] = Double.toString(grade.getPercentageReceived());
-                            else rows[currentColumnIndex] = Double.toString(grade.getPointsReceived());
+                                rowComments[currentColumnIndex] = Double.toString(grade.getPercentageReceived());
+                            } else {
+                                rows[currentColumnIndex] = Double.toString(grade.getPointsReceived());
+                                rowComments[currentColumnIndex] = Double.toString(grade.getPointsReceived());
+                            }
 
-                            rowComments[currentColumnIndex] = "";
+                            adjustedPoints += grade.getPointsReceived();
                         }
 
                         totalPoints += grade.getTotalPoints();
-
                         receivedPoints += grade.getPointsReceived();
 
 
@@ -236,8 +240,8 @@ public class ExcelTable {
 
     public void write(File outFile) {
         try(PrintWriter out = new PrintWriter(outFile)) {
-            for(int i = 0; i < rowColumnValues.size(); i++) {
-                out.println(ExcelHelper.getRowText(rowColumnValues.get(i)) + rowColumnFullText.get(i));
+            for(int i = 0; i < rowColumnFullText.size(); i++) {
+                out.println(ExcelHelper.getRowText(rowColumnValues.get(i)));
             }
         }
         catch(IOException e) {
