@@ -28,9 +28,9 @@
                         <student bs_username="#adiallo12" zy_id="3111847"/>
                         <student bs_username="#jmann8" zy_id="3117 757"/>
                         <student bs_username="#salfonzo" zy_id="3123030"/>
-                        <student bs_username="#lbargman" zy_id="3092338"/>
+                        <!-- <student bs_username="#lbargman" zy_id="3092338"/> -->
                         <student bs_username="#mackerman5" zy_id="3020832"/>
-                        <student bs_username="#ppryne" zy_id="3139067"/>
+                        <!-- <student bs_username="#ppryne" zy_id="3139067"/> -->
                         <student bs_username="#mfernandezzaragoza" zy_id="3043081"/>
                         <student bs_username="#thakem" zy_id="3116624"/>
                         <student bs_username="#ejammeh1" zy_id="3043335"/>
@@ -55,9 +55,9 @@
                                 #adiallo12,
                                 #jmann8,
                                 #salfonzo,
-                                #lbargman,
+                                <!-- #lbargman, -->
                                 #mackerman5,
-                                #ppryne,
+                                <!-- #ppryne, -->
                                 #mfernandezzaragoza,
                                 #thakem,
                                 #ejammeh1,

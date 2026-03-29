@@ -87,6 +87,8 @@ public class Main {
 
         consoleScanner.close();
 
+        //TODO: clean up this last files chosen logic
+
         //get last chosen files
         File lastFileSaveDir = new File("lastFileDir.sav");
         File lastOutputFileSaveDir = new File("outputFileDir.sav");
@@ -120,8 +122,8 @@ public class Main {
             if(!lastFileSaveDir.exists()){ lastFileSaveDir.createNewFile(); }
             if(!lastOutputFileSaveDir.exists()){ lastOutputFileSaveDir.createNewFile(); }
 
-            lastFileDir = new File(scan.next());
-            lastOutputFileDir = new File(scan2.next());
+            if(scan.hasNext()) lastFileDir = new File(scan.next());
+            if(scan2.hasNext()) lastOutputFileDir = new File(scan2.next());
         }
         catch (IOException ex) {
             System.out.println("Error while creating last files");
